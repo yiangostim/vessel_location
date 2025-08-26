@@ -51,7 +51,7 @@ jobs:
         
     - name: Create scraper script
       run: |
-        cat > analyze_ais_data.py << 'EOF'
+        cat > scraper.py << 'EOF'
         import asyncio
         import websockets
         import json
@@ -405,12 +405,31 @@ jobs:
             asyncio.run(main())
         EOF
 
-    - name: Run AIS Scraper
+    - name: Archive old data if CSV gets too large
+      run: |
+        if [ -f "ais_data/dry_bulk_vessels.csv" ]; then
+          file_size=$(du -m ais_data/dry_bulk_vessels.csv | cut -f1)
+          if [ $file_size -gt 50 ]; then  # If > 50MB
+            echo "CSV is ${file_size}MB, archiving old data..."
+            
+            # Create archive directory
+            mkdir -p ais_data/archives
+            
+            # Move current CSV to archive with timestamp
+            timestamp=$(date +%Y%m%d_%H%M%S)
+            mv ais_data/dry_bulk_vessels.csv "ais_data/archives/dry_bulk_vessels_${timestamp}.csv"
+            
+            # Compress the archive
+            gzip "ais_data/archives/dry_bulk_vessels_${timestamp}.csv"
+            
+            echo "Archived large CSV file"
+          fi
+        fi
       env:
         DURATION_MINUTES: ${{ github.event.inputs.duration_minutes || '10' }}
         DWT_MIN: ${{ github.event.inputs.dwt_min || '40000' }}
         DWT_MAX: ${{ github.event.inputs.dwt_max || '100000' }}
-      run: python analyze_ais_data.py
+      run: python scraper.py
       
     - name: Display data summary
       run: |
@@ -450,18 +469,31 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action AIS Scraper"
         
-        # Force sync with remote
-        git fetch origin main
-        git reset --hard origin/main
+        echo "Current git status:"
+        git status
         
-        # Re-add the data files
-        git add ais_data/
-        if [ -n "$(git status --porcelain)" ]; then
-          git commit -m "Update AIS data - $(date '+%Y-%m-%d %H:%M:%S UTC')"
-          git push origin main
-          echo "Data committed and pushed to repository"
+        # Force sync with remote
+        git fetch origin main || echo "Fetch failed, continuing..."
+        git reset --hard origin/main || echo "Reset failed, continuing..."
+        
+        # Check if data directory exists and has content
+        if [ -d "ais_data" ] && [ "$(ls -A ais_data)" ]; then
+          echo "Data directory contents:"
+          ls -la ais_data/
+          
+          # Re-add the data files
+          git add ais_data/ || echo "Git add failed"
+          
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Changes detected, committing..."
+            git commit -m "Update AIS data - $(date '+%Y-%m-%d %H:%M:%S UTC')" || echo "Commit failed"
+            git push origin main || echo "Push failed"
+            echo "Data commit attempted"
+          else
+            echo "No changes detected in git status"
+          fi
         else
-          echo "No new data to commit"
+          echo "ERROR: No ais_data directory or it's empty!"
         fi
         
     - name: Upload data as artifact
