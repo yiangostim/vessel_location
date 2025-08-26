@@ -2,7 +2,7 @@ name: AIS Dry Bulk Vessel Scraper
 
 on:
   schedule:
-    # Run every 6 hours with shorter 10-minute sessions to avoid rate limiting
+    # Run every 6 hours
     - cron: '0 */6 * * *'
   workflow_dispatch:
     inputs:
@@ -34,158 +34,388 @@ jobs:
       uses: actions/checkout@v4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        fetch-depth: 0
         
     - name: Setup Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
-        python-version: '3.9'
+        python-version: '3.11'
         
     - name: Install dependencies
       run: |
-        pip install websockets pandas asyncio-mqtt python-dateutil pytz
+        pip install websockets pandas python-dateutil pytz
         
-    - name: Ensure data directory exists
+    - name: Create data directory
       run: |
         mkdir -p ais_data
-        
-    - name: Download existing data from repository
-      run: |
-        echo "Checking for existing data files in repository..."
-        if [ -f "ais_data/dry_bulk_vessels.csv" ]; then
-          echo "✅ Found existing CSV: $(wc -l < ais_data/dry_bulk_vessels.csv) lines"
-          echo "📁 Size: $(du -h ais_data/dry_bulk_vessels.csv | cut -f1)"
-        else
-          echo "ℹ️  No existing CSV found - will create new one"
-        fi
-        
-        if [ -f "ais_data/vessel_database.json" ]; then
-          vessel_count=$(grep -o '"mmsi"' ais_data/vessel_database.json | wc -l)
-          echo "✅ Found vessel database: $vessel_count vessels"
-        else
-          echo "ℹ️  No existing vessel database found - will create new one"
-        fi
         
     - name: Archive old data if CSV gets too large
       run: |
         if [ -f "ais_data/dry_bulk_vessels.csv" ]; then
-          file_size=$(du -m ais_data/dry_bulk_vessels.csv | cut -f1)
-          if [ $file_size -gt 50 ]; then  # If > 50MB
-            echo "CSV is ${file_size}MB, archiving old data..."
-            
-            # Create archive directory
+          file_size=$(stat -f%z ais_data/dry_bulk_vessels.csv 2>/dev/null || stat -c%s ais_data/dry_bulk_vessels.csv)
+          file_size_mb=$((file_size / 1024 / 1024))
+          if [ $file_size_mb -gt 50 ]; then
+            echo "CSV is ${file_size_mb}MB, archiving old data..."
             mkdir -p ais_data/archives
-            
-            # Move current CSV to archive with timestamp
             timestamp=$(date +%Y%m%d_%H%M%S)
-            mv ais_data/dry_bulk_vessels.csv "ais_data/archives/dry_bulk_vessels_${timestamp}.csv"
-            
-            # Compress the archive
+            cp ais_data/dry_bulk_vessels.csv "ais_data/archives/dry_bulk_vessels_${timestamp}.csv"
             gzip "ais_data/archives/dry_bulk_vessels_${timestamp}.csv"
-            
-            echo "✅ Archived large CSV file"
+            echo "Archived large CSV file"
           fi
         fi
 
-    - name: Run AIS Data Collection
+    - name: Create scraper script
+      run: |
+        cat > scraper.py << 'EOF'
+        import asyncio
+        import websockets
+        import json
+        import pandas as pd
+        import os
+        import sys
+        from datetime import datetime, timezone
+        import logging
+        import signal
+
+        logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+        logger = logging.getLogger(__name__)
+
+        class AISCollector:
+            def __init__(self, api_key, duration_minutes=10, dwt_min=40000, dwt_max=100000):
+                self.api_key = api_key
+                self.duration_minutes = duration_minutes
+                self.dwt_min = dwt_min
+                self.dwt_max = dwt_max
+                self.vessel_database = {}
+                self.collected_data = []
+                self.is_running = True
+                self.csv_file = "ais_data/dry_bulk_vessels.csv"
+                self.vessel_db_file = "ais_data/vessel_database.json"
+                
+                # Dry bulk vessel types (AIS ship and cargo type codes)
+                self.dry_bulk_types = {70, 71, 72, 73, 74, 79}  # Various cargo ship types
+                
+                self.load_existing_data()
+                signal.signal(signal.SIGINT, self.signal_handler)
+                signal.signal(signal.SIGTERM, self.signal_handler)
+
+            def signal_handler(self, signum, frame):
+                logger.info(f"Received signal {signum}, shutting down...")
+                self.is_running = False
+
+            def load_existing_data(self):
+                """Load existing vessel database"""
+                if os.path.exists(self.vessel_db_file):
+                    try:
+                        with open(self.vessel_db_file, 'r') as f:
+                            data = json.load(f)
+                            self.vessel_database = {str(v['mmsi']): v for v in data}
+                        logger.info(f"Loaded {len(self.vessel_database)} vessels from database")
+                    except Exception as e:
+                        logger.warning(f"Could not load vessel database: {e}")
+
+            def estimate_dwt(self, dimensions):
+                """Estimate DWT from vessel dimensions"""
+                try:
+                    if not dimensions:
+                        return None
+                    
+                    length = dimensions.get('A', 0) + dimensions.get('B', 0)
+                    width = dimensions.get('C', 0) + dimensions.get('D', 0)
+                    
+                    if length <= 0 or width <= 0:
+                        return None
+                    
+                    # DWT estimation formula for bulk carriers
+                    if length < 150:
+                        dwt_factor = 0.75
+                    elif length < 200:
+                        dwt_factor = 0.80
+                    elif length < 250:
+                        dwt_factor = 0.85
+                    else:
+                        dwt_factor = 0.90
+                    
+                    estimated_dwt = int(length * width * 12 * dwt_factor)
+                    return max(10000, min(400000, estimated_dwt))
+                    
+                except Exception:
+                    return None
+
+            def is_target_vessel(self, vessel_data):
+                """Check if vessel matches our criteria"""
+                ship_type = vessel_data.get('ship_type')
+                
+                # Check ship type first
+                if ship_type and ship_type not in self.dry_bulk_types:
+                    return False
+                
+                # Check DWT range
+                estimated_dwt = vessel_data.get('estimated_dwt')
+                if estimated_dwt:
+                    return self.dwt_min <= estimated_dwt <= self.dwt_max
+                
+                # If no clear type or DWT, be inclusive for potential bulk carriers
+                return True
+
+            async def handle_message(self, message_data):
+                """Process incoming AIS messages"""
+                try:
+                    message = json.loads(message_data)
+                    
+                    if 'error' in message:
+                        logger.error(f"API Error: {message['error']}")
+                        return
+                    
+                    message_type = message.get('MessageType')
+                    
+                    if message_type == 'ShipStaticData':
+                        await self.process_static_data(message)
+                    elif message_type == 'PositionReport':
+                        await self.process_position_report(message)
+                        
+                except Exception as e:
+                    logger.debug(f"Error processing message: {e}")
+
+            async def process_static_data(self, message):
+                """Process vessel static data"""
+                try:
+                    metadata = message.get('Metadata', {})
+                    static_data = message.get('Message', {}).get('ShipStaticData', {})
+                    
+                    mmsi = str(metadata.get('MMSI') or static_data.get('UserID', ''))
+                    if not mmsi:
+                        return
+                    
+                    vessel = self.vessel_database.get(mmsi, {})
+                    
+                    vessel.update({
+                        'mmsi': mmsi,
+                        'name': (static_data.get('Name') or metadata.get('ShipName', '')).strip() or vessel.get('name', 'Unknown'),
+                        'call_sign': (static_data.get('CallSign') or '').strip() or vessel.get('call_sign', 'Unknown'),
+                        'imo_number': static_data.get('ImoNumber') or vessel.get('imo_number'),
+                        'ship_type': static_data.get('Type') or vessel.get('ship_type'),
+                        'dimensions': static_data.get('Dimension') or vessel.get('dimensions', {}),
+                        'destination': (static_data.get('Destination') or '').strip() or vessel.get('destination', 'Unknown'),
+                        'max_draught': static_data.get('MaximumStaticDraught') or vessel.get('max_draught'),
+                        'last_static_update': datetime.now(timezone.utc).isoformat()
+                    })
+                    
+                    # Estimate DWT
+                    if vessel['dimensions']:
+                        estimated_dwt = self.estimate_dwt(vessel['dimensions'])
+                        if estimated_dwt:
+                            vessel['estimated_dwt'] = estimated_dwt
+                    
+                    self.vessel_database[mmsi] = vessel
+                    
+                    logger.info(f"Updated vessel {vessel['name']} ({mmsi}) - DWT: {vessel.get('estimated_dwt', 'Unknown')}")
+                    
+                except Exception as e:
+                    logger.debug(f"Error processing static data: {e}")
+
+            async def process_position_report(self, message):
+                """Process vessel position reports"""
+                try:
+                    metadata = message.get('Metadata', {})
+                    position_data = message.get('Message', {}).get('PositionReport', {})
+                    
+                    mmsi = str(metadata.get('MMSI') or position_data.get('UserID', ''))
+                    if not mmsi:
+                        return
+                    
+                    # Ensure vessel exists in database
+                    if mmsi not in self.vessel_database:
+                        self.vessel_database[mmsi] = {
+                            'mmsi': mmsi,
+                            'name': metadata.get('ShipName', 'Unknown'),
+                            'ship_type': None,
+                            'estimated_dwt': None
+                        }
+                    
+                    vessel = self.vessel_database[mmsi]
+                    
+                    # Check if this is a target vessel
+                    if not self.is_target_vessel(vessel):
+                        return
+                    
+                    # Validate coordinates
+                    lat = position_data.get('Latitude')
+                    lon = position_data.get('Longitude')
+                    
+                    if lat is None or lon is None or abs(lat) > 90 or abs(lon) > 180:
+                        return
+                    
+                    # Create position record
+                    record = {
+                        'timestamp': datetime.now(timezone.utc).isoformat(),
+                        'mmsi': mmsi,
+                        'vessel_name': vessel.get('name', 'Unknown'),
+                        'latitude': lat,
+                        'longitude': lon,
+                        'speed_knots': position_data.get('Sog', 0),
+                        'course_degrees': position_data.get('Cog', 0),
+                        'heading_degrees': position_data.get('TrueHeading'),
+                        'navigation_status': position_data.get('NavigationalStatus'),
+                        'ship_type': vessel.get('ship_type'),
+                        'estimated_dwt': vessel.get('estimated_dwt'),
+                        'call_sign': vessel.get('call_sign', 'Unknown'),
+                        'destination': vessel.get('destination', 'Unknown'),
+                        'imo_number': vessel.get('imo_number'),
+                        'max_draught': vessel.get('max_draught')
+                    }
+                    
+                    self.collected_data.append(record)
+                    
+                    dwt_str = f"{vessel.get('estimated_dwt'):,}" if vessel.get('estimated_dwt') else 'Unknown'
+                    logger.info(f"Position: {record['vessel_name']} ({mmsi}) - DWT: {dwt_str} - Speed: {record['speed_knots']} kts")
+                    
+                except Exception as e:
+                    logger.debug(f"Error processing position report: {e}")
+
+            async def save_data(self):
+                """Save collected data"""
+                if not self.collected_data:
+                    logger.info("No new data to save")
+                    return
+                
+                new_df = pd.DataFrame(self.collected_data)
+                
+                # Ensure directory exists
+                os.makedirs(os.path.dirname(self.csv_file), exist_ok=True)
+                
+                # Handle CSV file
+                if os.path.exists(self.csv_file):
+                    try:
+                        existing_df = pd.read_csv(self.csv_file)
+                        
+                        # Remove exact duplicates
+                        merge_cols = ['mmsi', 'timestamp', 'latitude', 'longitude']
+                        merged = new_df.merge(existing_df[merge_cols], on=merge_cols, how='left', indicator=True)
+                        new_records = new_df[merged['_merge'] == 'left_only']
+                        
+                        if len(new_records) > 0:
+                            new_records.to_csv(self.csv_file, mode='a', header=False, index=False)
+                            logger.info(f"Appended {len(new_records)} new records")
+                        else:
+                            logger.info("No new unique records to append")
+                            
+                    except Exception as e:
+                        logger.warning(f"Could not load existing CSV: {e}")
+                        new_df.to_csv(self.csv_file, index=False)
+                else:
+                    new_df.to_csv(self.csv_file, index=False)
+                    logger.info(f"Created new CSV with {len(new_df)} records")
+                
+                # Save vessel database
+                vessel_list = list(self.vessel_database.values())
+                with open(self.vessel_db_file, 'w') as f:
+                    json.dump(vessel_list, f, indent=2, default=str)
+                logger.info(f"Updated vessel database with {len(vessel_list)} vessels")
+
+            async def run(self):
+                """Main execution loop"""
+                logger.info(f"Starting AIS collection for {self.duration_minutes} minutes")
+                logger.info(f"Target DWT range: {self.dwt_min:,} - {self.dwt_max:,}")
+                
+                uri = "wss://stream.aisstream.io/v0/stream"
+                
+                try:
+                    async with websockets.connect(uri) as websocket:
+                        logger.info("Connected to AISStream")
+                        
+                        # Subscribe to messages
+                        subscription = {
+                            "APIKey": self.api_key,
+                            "BoundingBoxes": [[[-90, -180], [90, 180]]],
+                            "FilterMessageTypes": ["PositionReport", "ShipStaticData"]
+                        }
+                        
+                        await websocket.send(json.dumps(subscription))
+                        logger.info("Subscription sent")
+                        
+                        # Collection loop
+                        end_time = asyncio.get_event_loop().time() + (self.duration_minutes * 60)
+                        
+                        while self.is_running and asyncio.get_event_loop().time() < end_time:
+                            try:
+                                message = await asyncio.wait_for(websocket.recv(), timeout=30.0)
+                                await self.handle_message(message)
+                            except asyncio.TimeoutError:
+                                continue
+                            except websockets.exceptions.ConnectionClosed:
+                                logger.warning("Connection closed")
+                                break
+                                
+                        await self.save_data()
+                        
+                except Exception as e:
+                    logger.error(f"Connection error: {e}")
+                    await self.save_data()
+                    raise
+
+        async def main():
+            api_key = os.getenv('AISSTREAM_API_KEY')
+            if not api_key:
+                logger.error("AISSTREAM_API_KEY not set")
+                sys.exit(1)
+            
+            duration = int(os.getenv('DURATION_MINUTES', '10'))
+            dwt_min = int(os.getenv('DWT_MIN', '40000'))
+            dwt_max = int(os.getenv('DWT_MAX', '100000'))
+            
+            collector = AISCollector(api_key, duration, dwt_min, dwt_max)
+            await collector.run()
+
+        if __name__ == "__main__":
+            asyncio.run(main())
+        EOF
+
+    - name: Run AIS scraper
       env:
         DURATION_MINUTES: ${{ github.event.inputs.duration_minutes || '10' }}
         DWT_MIN: ${{ github.event.inputs.dwt_min || '40000' }}
         DWT_MAX: ${{ github.event.inputs.dwt_max || '100000' }}
-      run: |
-        echo "🚀 Starting AIS data collection..."
-        echo "Duration: $DURATION_MINUTES minutes"
-        echo "DWT Range: $DWT_MIN - $DWT_MAX"
-        echo ""
-        
-        python analyze_ais_data.py
-        
-        echo ""
-        echo "✅ AIS data collection completed"
+      run: python scraper.py
       
-    - name: Display collection results
+    - name: Display results
       run: |
-        echo ""
-        echo "=== DATA COLLECTION RESULTS ==="
-        
+        echo "=== COLLECTION RESULTS ==="
         if [ -f "ais_data/dry_bulk_vessels.csv" ]; then
           total_lines=$(wc -l < ais_data/dry_bulk_vessels.csv)
-          echo "📊 Total position records: $((total_lines - 1))"
-          echo "📁 File size: $(du -h ais_data/dry_bulk_vessels.csv | cut -f1)"
-          
+          echo "Total records: $((total_lines - 1))"
+          echo "File size: $(du -h ais_data/dry_bulk_vessels.csv | cut -f1)"
           echo ""
-          echo "🚢 Most recent vessel positions:"
-          tail -5 ais_data/dry_bulk_vessels.csv | while IFS=',' read timestamp mmsi vessel_name lat lon speed course rest; do
-            echo "   $vessel_name ($mmsi): $lat,$lon at ${speed}kts"
-          done
-        else
-          echo "❌ No CSV file found after collection"
+          echo "Recent positions:"
+          tail -5 ais_data/dry_bulk_vessels.csv
         fi
         
         if [ -f "ais_data/vessel_database.json" ]; then
-          vessel_count=$(grep -o '"mmsi"' ais_data/vessel_database.json | wc -l)
+          vessel_count=$(python -c "import json; data=json.load(open('ais_data/vessel_database.json')); print(len(data))")
           echo ""
-          echo "🗃️  Vessel database: $vessel_count unique vessels"
+          echo "Vessel database: $vessel_count vessels"
         fi
 
-    - name: Commit and push data to repository
+    - name: Commit data
       run: |
-        # Configure git
         git config --local user.email "action@github.com"
-        git config --local user.name "AIS Data Collector"
+        git config --local user.name "AIS Scraper"
         
-        # Check what files we have
-        echo "📋 Checking data files..."
         if [ -d "ais_data" ] && [ "$(ls -A ais_data)" ]; then
-          ls -la ais_data/
-          
-          # Stage the data files
           git add ais_data/
           
-          # Check if there are changes to commit
-          if git diff --staged --quiet; then
-            echo "ℹ️  No new data to commit"
+          if ! git diff --staged --quiet; then
+            git commit -m "Update AIS data - $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+            git push
+            echo "Data committed successfully"
           else
-            echo "💾 Committing new data..."
-            git commit -m "🚢 Update AIS data - $(date -u '+%Y-%m-%d %H:%M:%S UTC') 
-            
-            Collection summary:
-            - Duration: ${{ github.event.inputs.duration_minutes || '10' }} minutes
-            - Target DWT: ${{ github.event.inputs.dwt_min || '40000' }}-${{ github.event.inputs.dwt_max || '100000' }}
-            - Workflow: ${{ github.run_number }}"
-            
-            # Push to repository
-            echo "📤 Pushing data to repository..."
-            git push origin main
-            echo "✅ Data successfully saved to repository"
+            echo "No changes to commit"
           fi
-        else
-          echo "❌ ERROR: No data directory found or empty!"
-          exit 1
         fi
         
-    - name: Upload data as backup artifact
+    - name: Upload backup
       uses: actions/upload-artifact@v4
-      if: always()  # Upload even if previous steps failed
+      if: always()
       with:
-        name: ais-data-backup-${{ github.run_number }}
+        name: ais-data-${{ github.run_number }}
         path: ais_data/
         retention-days: 30
-        
-    - name: Print final summary
-      if: always()
-      run: |
-        echo ""
-        echo "🏁 WORKFLOW SUMMARY"
-        echo "=================="
-        echo "⏰ Started: $(date -d '@${{ github.event.repository.pushed_at }}' '+%Y-%m-%d %H:%M:%S UTC' 2>/dev/null || echo 'Unknown')"
-        echo "🎯 Target: Dry bulk vessels ${{ github.event.inputs.dwt_min || '40000' }}-${{ github.event.inputs.dwt_max || '100000' }} DWT"
-        echo "⏱️  Duration: ${{ github.event.inputs.duration_minutes || '10' }} minutes"
-        echo "🔄 Run #: ${{ github.run_number }}"
-        echo "🌐 Next scheduled run: $(date -d '+6 hours' '+%Y-%m-%d %H:%M:%S UTC')"
-        echo ""
-        echo "📊 Data persistence strategy:"
-        echo "   • Appends to existing CSV in repository"
-        echo "   • Commits changes back to main branch" 
-        echo "   • Archives large files (>50MB) automatically"
-        echo "   • Creates backup artifacts for 30 days"
