@@ -45,9 +45,26 @@ jobs:
       run: |
         pip install websockets pandas asyncio-mqtt python-dateutil pytz
         
-    - name: Create data directory
+    - name: Ensure data directory exists
       run: |
         mkdir -p ais_data
+        
+    - name: Download existing data from repository
+      run: |
+        echo "Checking for existing data files in repository..."
+        if [ -f "ais_data/dry_bulk_vessels.csv" ]; then
+          echo "✅ Found existing CSV: $(wc -l < ais_data/dry_bulk_vessels.csv) lines"
+          echo "📁 Size: $(du -h ais_data/dry_bulk_vessels.csv | cut -f1)"
+        else
+          echo "ℹ️  No existing CSV found - will create new one"
+        fi
+        
+        if [ -f "ais_data/vessel_database.json" ]; then
+          vessel_count=$(grep -o '"mmsi"' ais_data/vessel_database.json | wc -l)
+          echo "✅ Found vessel database: $vessel_count vessels"
+        else
+          echo "ℹ️  No existing vessel database found - will create new one"
+        fi
         
     - name: Archive old data if CSV gets too large
       run: |
@@ -66,85 +83,109 @@ jobs:
             # Compress the archive
             gzip "ais_data/archives/dry_bulk_vessels_${timestamp}.csv"
             
-            echo "Archived large CSV file"
+            echo "✅ Archived large CSV file"
           fi
         fi
 
-    - name: Run AIS Scraper
+    - name: Run AIS Data Collection
       env:
         DURATION_MINUTES: ${{ github.event.inputs.duration_minutes || '10' }}
         DWT_MIN: ${{ github.event.inputs.dwt_min || '40000' }}
         DWT_MAX: ${{ github.event.inputs.dwt_max || '100000' }}
-      run: python analyze_ais_data.py
-      
-    - name: Display data collection summary
       run: |
-        echo "=== DATA COLLECTION SUMMARY ==="
-        echo "Collection frequency: Every 6 hours (optimal for 12-15kt vessels)"
-        echo "Session duration: 10 minutes per run"
+        echo "🚀 Starting AIS data collection..."
+        echo "Duration: $DURATION_MINUTES minutes"
+        echo "DWT Range: $DWT_MIN - $DWT_MAX"
         echo ""
+        
+        python analyze_ais_data.py
+        
+        echo ""
+        echo "✅ AIS data collection completed"
+      
+    - name: Display collection results
+      run: |
+        echo ""
+        echo "=== DATA COLLECTION RESULTS ==="
+        
         if [ -f "ais_data/dry_bulk_vessels.csv" ]; then
           total_lines=$(wc -l < ais_data/dry_bulk_vessels.csv)
-          echo "📊 Main CSV file: $((total_lines - 1)) position records"
+          echo "📊 Total position records: $((total_lines - 1))"
           echo "📁 File size: $(du -h ais_data/dry_bulk_vessels.csv | cut -f1)"
-          echo "📅 Data age: $(stat -c %y ais_data/dry_bulk_vessels.csv | cut -d' ' -f1) to $(date +%Y-%m-%d)"
+          
           echo ""
-          echo "🚢 Latest vessel positions (last 3):"
-          tail -3 ais_data/dry_bulk_vessels.csv | while read line; do
-            echo "   $line"
+          echo "🚢 Most recent vessel positions:"
+          tail -5 ais_data/dry_bulk_vessels.csv | while IFS=',' read timestamp mmsi vessel_name lat lon speed course rest; do
+            echo "   $vessel_name ($mmsi): $lat,$lon at ${speed}kts"
           done
         else
-          echo "❌ No CSV file found"
+          echo "❌ No CSV file found after collection"
         fi
         
         if [ -f "ais_data/vessel_database.json" ]; then
           vessel_count=$(grep -o '"mmsi"' ais_data/vessel_database.json | wc -l)
           echo ""
-          echo "🗃️  Vessel database: $vessel_count unique vessels tracked"
+          echo "🗃️  Vessel database: $vessel_count unique vessels"
         fi
-        
-        echo ""
-        echo "ℹ️  Data Collection Strategy:"
-        echo "   • Every 6 hours = ~25-30nm vessel movement between samples"  
-        echo "   • 10min sessions = captures multiple position updates per vessel"
-        echo "   • Appends new data, never deletes historical positions"
-        echo "   • Tracks dry bulk carriers 40,000-100,000 DWT globally"
 
-    - name: Commit and push data
+    - name: Commit and push data to repository
       run: |
+        # Configure git
         git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action AIS Scraper"
+        git config --local user.name "AIS Data Collector"
         
-        echo "Current git status:"
-        git status
-        
-        # Force sync with remote
-        git fetch origin main || echo "Fetch failed, continuing..."
-        git reset --hard origin/main || echo "Reset failed, continuing..."
-        
-        # Check if data directory exists and has content
+        # Check what files we have
+        echo "📋 Checking data files..."
         if [ -d "ais_data" ] && [ "$(ls -A ais_data)" ]; then
-          echo "Data directory contents:"
           ls -la ais_data/
           
-          # Re-add the data files
-          git add ais_data/ || echo "Git add failed"
+          # Stage the data files
+          git add ais_data/
           
-          if [ -n "$(git status --porcelain)" ]; then
-            echo "Changes detected, committing..."
-            git commit -m "Update AIS data - $(date '+%Y-%m-%d %H:%M:%S UTC')" || echo "Commit failed"
-            git push origin main || echo "Push failed"
-            echo "Data commit attempted"
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "ℹ️  No new data to commit"
           else
-            echo "No changes detected in git status"
+            echo "💾 Committing new data..."
+            git commit -m "🚢 Update AIS data - $(date -u '+%Y-%m-%d %H:%M:%S UTC') 
+            
+            Collection summary:
+            - Duration: ${{ github.event.inputs.duration_minutes || '10' }} minutes
+            - Target DWT: ${{ github.event.inputs.dwt_min || '40000' }}-${{ github.event.inputs.dwt_max || '100000' }}
+            - Workflow: ${{ github.run_number }}"
+            
+            # Push to repository
+            echo "📤 Pushing data to repository..."
+            git push origin main
+            echo "✅ Data successfully saved to repository"
           fi
         else
-          echo "ERROR: No ais_data directory or it's empty!"
+          echo "❌ ERROR: No data directory found or empty!"
+          exit 1
         fi
         
-    - name: Upload data as artifact
+    - name: Upload data as backup artifact
       uses: actions/upload-artifact@v4
+      if: always()  # Upload even if previous steps failed
       with:
         name: ais-data-backup-${{ github.run_number }}
         path: ais_data/
-        retention-days: 90
+        retention-days: 30
+        
+    - name: Print final summary
+      if: always()
+      run: |
+        echo ""
+        echo "🏁 WORKFLOW SUMMARY"
+        echo "=================="
+        echo "⏰ Started: $(date -d '@${{ github.event.repository.pushed_at }}' '+%Y-%m-%d %H:%M:%S UTC' 2>/dev/null || echo 'Unknown')"
+        echo "🎯 Target: Dry bulk vessels ${{ github.event.inputs.dwt_min || '40000' }}-${{ github.event.inputs.dwt_max || '100000' }} DWT"
+        echo "⏱️  Duration: ${{ github.event.inputs.duration_minutes || '10' }} minutes"
+        echo "🔄 Run #: ${{ github.run_number }}"
+        echo "🌐 Next scheduled run: $(date -d '+6 hours' '+%Y-%m-%d %H:%M:%S UTC')"
+        echo ""
+        echo "📊 Data persistence strategy:"
+        echo "   • Appends to existing CSV in repository"
+        echo "   • Commits changes back to main branch" 
+        echo "   • Archives large files (>50MB) automatically"
+        echo "   • Creates backup artifacts for 30 days"
