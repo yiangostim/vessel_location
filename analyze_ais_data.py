@@ -1,4 +1,4 @@
-name: AIS Dry Bulk Vessel Scraper
+# name: AIS Dry Bulk Vessel Scraper
 
 on:
   schedule:
