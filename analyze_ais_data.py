@@ -72,7 +72,7 @@ jobs:
 
     - name: Create scraper script
       run: |
-        cat > scraper.py << 'EOF'
+        cat > analyze_ais_data.py << 'EOF'
         import asyncio
         import websockets
         import json
@@ -431,7 +431,7 @@ jobs:
         DURATION_MINUTES: ${{ github.event.inputs.duration_minutes || '10' }}
         DWT_MIN: ${{ github.event.inputs.dwt_min || '40000' }}
         DWT_MAX: ${{ github.event.inputs.dwt_max || '100000' }}
-      run: python scraper.py
+      run: python analyze_ais_data.py
       
     - name: Display data collection summary
       run: |
