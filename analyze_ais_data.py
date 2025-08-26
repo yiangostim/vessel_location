@@ -1,392 +1,506 @@
-#!/usr/bin/env python3
-"""
-AIS Dry Bulk Vessel Data Analyzer
-Analyzes the collected AIS data and generates comprehensive insights
+name: AIS Dry Bulk Vessel Scraper
 
-Usage: python analyze_ais_data.py [--csv-path path] [--days N] [--export-html]
-"""
+on:
+  schedule:
+    # Run every 6 hours with shorter 10-minute sessions to avoid rate limiting
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+    inputs:
+      duration_minutes:
+        description: 'Duration to scrape in minutes'
+        required: false
+        default: '10'
+        type: string
+      dwt_min:
+        description: 'Minimum DWT'
+        required: false
+        default: '40000'
+        type: string
+      dwt_max:
+        description: 'Maximum DWT'
+        required: false
+        default: '100000'
+        type: string
 
-import pandas as pd
-import numpy as np
-import json
-import os
-import argparse
-from datetime import datetime, timedelta
-import matplotlib.pyplot as plt
-import seaborn as sns
-from typing import Dict, List, Tuple
-import warnings
-warnings.filterwarnings('ignore')
+env:
+  AISSTREAM_API_KEY: ${{ secrets.AISSTREAM_API_KEY }}
 
-class AISDataAnalyzer:
-    def __init__(self, csv_path: str = "ais_data/dry_bulk_vessels.csv", 
-                 vessel_db_path: str = "ais_data/vessel_database.json"):
-        self.csv_path = csv_path
-        self.vessel_db_path = vessel_db_path
-        self.df = None
-        self.vessel_db = {}
-        
-        # Set up plotting style
-        plt.style.use('default')
-        sns.set_palette("husl")
-        
-    def load_data(self):
-        """Load AIS data and vessel database"""
-        print(f"Loading data from {self.csv_path}...")
-        
-        if not os.path.exists(self.csv_path):
-            raise FileNotFoundError(f"CSV file not found: {self.csv_path}")
-        
-        # Load CSV data
-        self.df = pd.read_csv(self.csv_path)
-        self.df['timestamp'] = pd.to_datetime(self.df['timestamp'])
-        
-        # Load vessel database if available
-        if os.path.exists(self.vessel_db_path):
-            with open(self.vessel_db_path, 'r') as f:
-                vessel_list = json.load(f)
-                self.vessel_db = {str(v['mmsi']): v for v in vessel_list}
-        
-        print(f"Loaded {len(self.df)} position records")
-        print(f"Loaded {len(self.vessel_db)} vessels in database")
-        print(f"Data time range: {self.df['timestamp'].min()} to {self.df['timestamp'].max()}")
-        
-    def filter_by_days(self, days: int):
-        """Filter data to last N days"""
-        cutoff_date = datetime.now() - timedelta(days=days)
-        initial_count = len(self.df)
-        self.df = self.df[self.df['timestamp'] >= cutoff_date]
-        print(f"Filtered to last {days} days: {len(self.df)} records (was {initial_count})")
-        
-    def basic_statistics(self):
-        """Generate basic statistics"""
-        print("\n" + "="*60)
-        print("BASIC STATISTICS")
-        print("="*60)
-        
-        unique_vessels = self.df['mmsi'].nunique()
-        total_records = len(self.df)
-        
-        print(f"Total Position Records: {total_records:,}")
-        print(f"Unique Vessels: {unique_vessels:,}")
-        print(f"Average Records per Vessel: {total_records/unique_vessels:.1f}")
-        
-        # Time analysis
-        time_span = (self.df['timestamp'].max() - self.df['timestamp'].min()).total_seconds() / 3600
-        print(f"Data Time Span: {time_span:.1f} hours")
-        print(f"Records per Hour: {total_records/time_span:.1f}")
-        
-        # Geographic coverage
-        lat_range = self.df['latitude'].max() - self.df['latitude'].min()
-        lon_range = self.df['longitude'].max() - self.df['longitude'].min()
-        print(f"Geographic Coverage: {lat_range:.1f}° latitude × {lon_range:.1f}° longitude")
-        
-    def vessel_size_analysis(self):
-        """Analyze vessel sizes and DWT distribution"""
-        print("\n" + "="*60)
-        print("VESSEL SIZE ANALYSIS")
-        print("="*60)
-        
-        # Get vessels with DWT data
-        dwt_data = self.df.dropna(subset=['estimated_dwt'])
-        
-        if len(dwt_data) == 0:
-            print("No DWT data available in the dataset")
-            return
-            
-        print(f"Vessels with DWT data: {dwt_data['mmsi'].nunique():,}")
-        print(f"DWT Range: {dwt_data['estimated_dwt'].min():,.0f} - {dwt_data['estimated_dwt'].max():,.0f} tonnes")
-        print(f"Average DWT: {dwt_data['estimated_dwt'].mean():,.0f} tonnes")
-        print(f"Median DWT: {dwt_data['estimated_dwt'].median():,.0f} tonnes")
-        
-        # DWT distribution by bins
-        bins = [(40000, 50000), (50000, 60000), (60000, 70000), 
-                (70000, 80000), (80000, 90000), (90000, 100000)]
-        
-        print("\nDWT Distribution:")
-        for min_dwt, max_dwt in bins:
-            count = len(dwt_data[(dwt_data['estimated_dwt'] >= min_dwt) & 
-                                (dwt_data['estimated_dwt'] < max_dwt)])
-            pct = (count / len(dwt_data)) * 100
-            bar = "█" * int(pct / 2)  # Scale for display
-            print(f"{min_dwt:,}-{max_dwt:,}t: {count:3d} ({pct:4.1f}%) {bar}")
-            
-    def activity_analysis(self):
-        """Analyze vessel activity patterns"""
-        print("\n" + "="*60)
-        print("ACTIVITY ANALYSIS")
-        print("="*60)
-        
-        # Speed analysis
-        speed_data = self.df['speed_knots'].dropna()
-        print(f"Speed Statistics (knots):")
-        print(f"  Average: {speed_data.mean():.1f}")
-        print(f"  Median: {speed_data.median():.1f}")
-        print(f"  Max: {speed_data.max():.1f}")
-        
-        # Activity classification
-        stationary = (speed_data < 1).sum()
-        slow = ((speed_data >= 1) & (speed_data < 5)).sum()
-        cruising = ((speed_data >= 5) & (speed_data < 12)).sum()
-        fast = (speed_data >= 12).sum()
-        
-        print(f"\nActivity Classification:")
-        print(f"  Stationary (<1 kt): {stationary:,} ({stationary/len(speed_data)*100:.1f}%)")
-        print(f"  Slow (1-5 kt): {slow:,} ({slow/len(speed_data)*100:.1f}%)")
-        print(f"  Cruising (5-12 kt): {cruising:,} ({cruising/len(speed_data)*100:.1f}%)")
-        print(f"  Fast (>12 kt): {fast:,} ({fast/len(speed_data)*100:.1f}%)")
-        
-        # Time-based analysis
-        self.df['hour'] = self.df['timestamp'].dt.hour
-        hourly_activity = self.df.groupby('hour').size()
-        peak_hour = hourly_activity.idxmax()
-        print(f"\nPeak Activity Hour: {peak_hour:02d}:00 UTC ({hourly_activity[peak_hour]} records)")
-        
-    def geographic_analysis(self):
-        """Analyze geographic distribution"""
-        print("\n" + "="*60)
-        print("GEOGRAPHIC ANALYSIS")
-        print("="*60)
-        
-        # Regional classification (simplified)
-        regions = {
-            'North Atlantic': (self.df['latitude'] > 40) & (self.df['longitude'] < -20),
-            'Mediterranean': (self.df['latitude'].between(30, 46)) & (self.df['longitude'].between(-6, 36)),
-            'North Sea/Baltic': (self.df['latitude'] > 50) & (self.df['longitude'].between(-5, 30)),
-            'Asia-Pacific': (self.df['longitude'] > 100),
-            'Americas': (self.df['longitude'] < -30),
-            'Other': True  # Default for remaining
-        }
-        
-        print("Regional Distribution:")
-        total_records = len(self.df)
-        for region, condition in regions.items():
-            if region == 'Other':
-                # Calculate 'Other' as remainder
-                other_count = total_records - sum([len(self.df[cond]) for cond in list(regions.values())[:-1]])
-                count = other_count
-            else:
-                count = len(self.df[condition])
-            pct = (count / total_records) * 100
-            print(f"  {region}: {count:,} ({pct:.1f}%)")
-            
-        # Most active areas (by density)
-        print(f"\nMost Northern Point: {self.df['latitude'].max():.2f}°N")
-        print(f"Most Southern Point: {self.df['latitude'].min():.2f}°N")
-        print(f"Most Eastern Point: {self.df['longitude'].max():.2f}°E")
-        print(f"Most Western Point: {self.df['longitude'].min():.2f}°W")
-        
-    def vessel_insights(self):
-        """Generate insights about individual vessels"""
-        print("\n" + "="*60)
-        print("VESSEL INSIGHTS")
-        print("="*60)
-        
-        # Most tracked vessels
-        vessel_counts = self.df['mmsi'].value_counts().head(10)
-        print("Most Frequently Tracked Vessels:")
-        for mmsi, count in vessel_counts.items():
-            vessel_info = self.vessel_db.get(str(mmsi), {})
-            name = vessel_info.get('name', self.df[self.df['mmsi']==mmsi]['vessel_name'].iloc[0])
-            dwt = vessel_info.get('estimated_dwt')
-            dwt_str = f", {dwt:,}t DWT" if dwt else ""
-            print(f"  {name} ({mmsi}): {count} positions{dwt_str}")
-            
-        # Speed champions
-        print(f"\nFastest Recorded Speeds:")
-        fastest = self.df.nlargest(5, 'speed_knots')[['vessel_name', 'mmsi', 'speed_knots', 'timestamp']]
-        for _, row in fastest.iterrows():
-            print(f"  {row['vessel_name']} ({row['mmsi']}): {row['speed_knots']:.1f} knots")
-            
-        # Journey analysis
-        vessel_journeys = self.df.groupby('mmsi').agg({
-            'latitude': ['min', 'max'],
-            'longitude': ['min', 'max'],
-            'timestamp': ['min', 'max'],
-            'speed_knots': 'mean'
-        }).round(2)
-        
-        # Calculate distances traveled (very rough approximation)
-        print(f"\nLongest Tracking Periods:")
-        journey_durations = []
-        for mmsi in self.df['mmsi'].unique()[:10]:  # Top 10 most tracked
-            vessel_data = self.df[self.df['mmsi'] == mmsi].sort_values('timestamp')
-            if len(vessel_data) > 1:
-                duration = (vessel_data['timestamp'].iloc[-1] - vessel_data['timestamp'].iloc[0]).total_seconds() / 3600
-                journey_durations.append((mmsi, duration, len(vessel_data)))
-        
-        journey_durations.sort(key=lambda x: x[1], reverse=True)
-        for mmsi, hours, count in journey_durations[:5]:
-            vessel_name = self.df[self.df['mmsi']==mmsi]['vessel_name'].iloc[0]
-            print(f"  {vessel_name} ({mmsi}): {hours:.1f} hours ({count} positions)")
-            
-    def destination_analysis(self):
-        """Analyze vessel destinations"""
-        print("\n" + "="*60)
-        print("DESTINATION ANALYSIS")
-        print("="*60)
-        
-        # Clean destination data
-        destinations = self.df[self.df['destination'].notna() & 
-                             (self.df['destination'] != 'Unknown') & 
-                             (self.df['destination'] != '')]['destination']
-        
-        if len(destinations) == 0:
-            print("No destination data available")
-            return
-            
-        dest_counts = destinations.value_counts().head(10)
-        print("Top Destinations:")
-        for dest, count in dest_counts.items():
-            vessels = self.df[self.df['destination'] == dest]['mmsi'].nunique()
-            print(f"  {dest}: {vessels} vessels, {count} position reports")
-            
-    def temporal_analysis(self):
-        """Analyze temporal patterns"""
-        print("\n" + "="*60)
-        print("TEMPORAL PATTERNS")
-        print("="*60)
-        
-        # Daily patterns
-        self.df['day_of_week'] = self.df['timestamp'].dt.day_name()
-        daily_activity = self.df.groupby('day_of_week').size()
-        print("Activity by Day of Week:")
-        for day in ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']:
-            if day in daily_activity:
-                count = daily_activity[day]
-                bar = "█" * int(count / daily_activity.max() * 20)
-                print(f"  {day[:3]}: {count:4d} {bar}")
-                
-        # Monthly trends (if data spans multiple months)
-        self.df['month'] = self.df['timestamp'].dt.strftime('%Y-%m')
-        monthly_activity = self.df.groupby('month').size()
-        if len(monthly_activity) > 1:
-            print(f"\nMonthly Activity Trend:")
-            for month, count in monthly_activity.items():
-                vessels = self.df[self.df['month'] == month]['mmsi'].nunique()
-                print(f"  {month}: {count:,} positions from {vessels} vessels")
-                
-    def generate_summary_report(self, output_file: str = None):
-        """Generate complete analysis report"""
-        if output_file:
-            import sys
-            original_stdout = sys.stdout
-            sys.stdout = open(output_file, 'w')
-            
-        try:
-            print("AIS DRY BULK VESSEL DATA ANALYSIS REPORT")
-            print("=" * 80)
-            print(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-            print(f"Data source: {self.csv_path}")
-            print()
-            
-            self.basic_statistics()
-            self.vessel_size_analysis()
-            self.activity_analysis()
-            self.geographic_analysis()
-            self.vessel_insights()
-            self.destination_analysis()
-            self.temporal_analysis()
-            
-            print("\n" + "="*80)
-            print("END OF REPORT")
-            
-        finally:
-            if output_file:
-                sys.stdout.close()
-                sys.stdout = original_stdout
-                print(f"Report saved to {output_file}")
-                
-    def create_visualizations(self, output_dir: str = "plots"):
-        """Create data visualizations"""
-        if not os.path.exists(output_dir):
-            os.makedirs(output_dir)
-            
-        # 1. Vessel positions map
-        plt.figure(figsize=(15, 10))
-        plt.scatter(self.df['longitude'], self.df['latitude'], 
-                   c=self.df['speed_knots'], cmap='viridis', alpha=0.6, s=1)
-        plt.colorbar(label='Speed (knots)')
-        plt.xlabel('Longitude')
-        plt.ylabel('Latitude')
-        plt.title('Dry Bulk Vessel Positions Colored by Speed')
-        plt.grid(True, alpha=0.3)
-        plt.savefig(f'{output_dir}/vessel_positions_map.png', dpi=300, bbox_inches='tight')
-        plt.close()
-        
-        # 2. Speed distribution
-        plt.figure(figsize=(10, 6))
-        self.df['speed_knots'].hist(bins=50, alpha=0.7, edgecolor='black')
-        plt.xlabel('Speed (knots)')
-        plt.ylabel('Frequency')
-        plt.title('Vessel Speed Distribution')
-        plt.grid(True, alpha=0.3)
-        plt.savefig(f'{output_dir}/speed_distribution.png', dpi=300, bbox_inches='tight')
-        plt.close()
-        
-        # 3. DWT distribution (if available)
-        dwt_data = self.df.dropna(subset=['estimated_dwt'])
-        if len(dwt_data) > 0:
-            plt.figure(figsize=(10, 6))
-            dwt_data['estimated_dwt'].hist(bins=30, alpha=0.7, edgecolor='black')
-            plt.xlabel('Estimated DWT (tonnes)')
-            plt.ylabel('Frequency')
-            plt.title('Vessel DWT Distribution')
-            plt.grid(True, alpha=0.3)
-            plt.savefig(f'{output_dir}/dwt_distribution.png', dpi=300, bbox_inches='tight')
-            plt.close()
-        
-        # 4. Activity timeline
-        daily_activity = self.df.groupby(self.df['timestamp'].dt.date).size()
-        plt.figure(figsize=(12, 6))
-        daily_activity.plot(kind='line', marker='o')
-        plt.xlabel('Date')
-        plt.ylabel('Position Reports')
-        plt.title('Daily AIS Activity Timeline')
-        plt.grid(True, alpha=0.3)
-        plt.xticks(rotation=45)
-        plt.savefig(f'{output_dir}/activity_timeline.png', dpi=300, bbox_inches='tight')
-        plt.close()
-        
-        print(f"Visualizations saved to {output_dir}/ directory")
-
-def main():
-    parser = argparse.ArgumentParser(description='Analyze AIS dry bulk vessel data')
-    parser.add_argument('--csv-path', default='ais_data/dry_bulk_vessels.csv',
-                       help='Path to CSV data file')
-    parser.add_argument('--days', type=int, help='Filter to last N days')
-    parser.add_argument('--export-report', help='Export report to text file')
-    parser.add_argument('--create-plots', action='store_true',
-                       help='Create visualization plots')
-    parser.add_argument('--plots-dir', default='plots',
-                       help='Directory for plot outputs')
+jobs:
+  scrape-ais-data:
+    runs-on: ubuntu-latest
     
-    args = parser.parse_args()
-    
-    try:
-        analyzer = AISDataAnalyzer(args.csv_path)
-        analyzer.load_data()
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 0
         
-        if args.days:
-            analyzer.filter_by_days(args.days)
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Install dependencies
+      run: |
+        pip install websockets pandas asyncio-mqtt python-dateutil pytz
+        
+    - name: Create data directory
+      run: |
+        mkdir -p ais_data
+        
+    - name: Archive old data if CSV gets too large
+      run: |
+        if [ -f "ais_data/dry_bulk_vessels.csv" ]; then
+          file_size=$(du -m ais_data/dry_bulk_vessels.csv | cut -f1)
+          if [ $file_size -gt 50 ]; then  # If > 50MB
+            echo "CSV is ${file_size}MB, archiving old data..."
             
-        if args.export_report:
-            analyzer.generate_summary_report(args.export_report)
-        else:
-            analyzer.generate_summary_report()
+            # Create archive directory
+            mkdir -p ais_data/archives
             
-        if args.create_plots:
-            analyzer.create_visualizations(args.plots_dir)
+            # Move current CSV to archive with timestamp
+            timestamp=$(date +%Y%m%d_%H%M%S)
+            mv ais_data/dry_bulk_vessels.csv "ais_data/archives/dry_bulk_vessels_${timestamp}.csv"
             
-    except FileNotFoundError as e:
-        print(f"Error: {e}")
-        print("Make sure the CSV file exists and the path is correct.")
-        return 1
-    except Exception as e:
-        print(f"Error analyzing data: {e}")
-        return 1
-    
-    return 0
+            # Compress the archive
+            gzip "ais_data/archives/dry_bulk_vessels_${timestamp}.csv"
+            
+            echo "Archived large CSV file"
+          fi
+        fi
 
-if __name__ == "__main__":
-    exit(main())
+    - name: Create scraper script
+      run: |
+        cat > scraper.py << 'EOF'
+        import asyncio
+        import websockets
+        import json
+        import pandas as pd
+        import os
+        import sys
+        from datetime import datetime, timezone
+        import logging
+        from typing import Dict, Set, List, Optional
+        import signal
+        import math
+
+        # Configure logging
+        logging.basicConfig(
+            level=logging.INFO,
+            format='%(asctime)s - %(levelname)s - %(message)s'
+        )
+        logger = logging.getLogger(__name__)
+
+        class AISDataCollector:
+            def __init__(self, api_key: str, duration_minutes: int = 10, dwt_min: int = 40000, dwt_max: int = 100000):
+                self.api_key = api_key
+                self.duration_minutes = duration_minutes
+                self.dwt_min = dwt_min
+                self.dwt_max = dwt_max
+                self.vessel_database: Dict = {}
+                self.collected_data: List[Dict] = []
+                self.is_running = True
+                self.csv_file_path = "ais_data/dry_bulk_vessels.csv"
+                self.vessel_db_path = "ais_data/vessel_database.json"
+                
+                # Dry bulk vessel types (AIS ship type codes)
+                self.dry_bulk_types = {70, 71, 72, 73, 74, 79}
+                
+                # Load existing data
+                self.load_existing_data()
+                
+                # Setup signal handlers
+                signal.signal(signal.SIGINT, self.signal_handler)
+                signal.signal(signal.SIGTERM, self.signal_handler)
+
+            def signal_handler(self, signum, frame):
+                logger.info(f"Received signal {signum}, shutting down gracefully...")
+                self.is_running = False
+
+            def load_existing_data(self):
+                """Load existing vessel database to avoid duplicate static data requests"""
+                if os.path.exists(self.vessel_db_path):
+                    try:
+                        with open(self.vessel_db_path, 'r') as f:
+                            data = json.load(f)
+                            self.vessel_database = {str(v['mmsi']): v for v in data}
+                        logger.info(f"Loaded {len(self.vessel_database)} vessels from existing database")
+                    except Exception as e:
+                        logger.warning(f"Could not load existing vessel database: {e}")
+
+            def estimate_dwt_from_dimensions(self, dimensions: Dict) -> Optional[int]:
+                """Estimate DWT from vessel dimensions using naval architecture principles"""
+                try:
+                    length = dimensions.get('A', 0) + dimensions.get('B', 0)
+                    width = dimensions.get('C', 0) + dimensions.get('D', 0)
+                    
+                    if length <= 0 or width <= 0:
+                        return None
+                    
+                    # Enhanced DWT estimation for dry bulk carriers
+                    # Based on typical length/beam ratios and cargo hold coefficients
+                    if length < 150:  # Handysize
+                        dwt_factor = 0.75
+                    elif length < 200:  # Supramax/Ultramax
+                        dwt_factor = 0.80
+                    elif length < 250:  # Panamax
+                        dwt_factor = 0.85
+                    else:  # Capesize
+                        dwt_factor = 0.90
+                    
+                    # Volume approximation * density factor * cargo coefficient
+                    estimated_dwt = int((length * width * 12 * dwt_factor))
+                    
+                    # Apply reasonable bounds
+                    return max(10000, min(400000, estimated_dwt))
+                    
+                except Exception as e:
+                    logger.debug(f"Error estimating DWT: {e}")
+                    return None
+
+            def is_target_vessel(self, mmsi: str, vessel_data: Dict) -> bool:
+                """Determine if vessel matches our criteria"""
+                # Check ship type
+                ship_type = vessel_data.get('ship_type')
+                if ship_type and ship_type not in self.dry_bulk_types:
+                    return False
+                
+                # If no ship type, assume it could be dry bulk (conservative approach)
+                
+                # Check DWT if available
+                estimated_dwt = vessel_data.get('estimated_dwt')
+                if estimated_dwt:
+                    return self.dwt_min <= estimated_dwt <= self.dwt_max
+                
+                # If no DWT data but potential dry bulk type, include it
+                return True
+
+            async def handle_message(self, message_data: str):
+                """Process incoming AIS messages"""
+                try:
+                    message = json.loads(message_data)
+                    
+                    if 'error' in message:
+                        logger.error(f"API Error: {message['error']}")
+                        return
+                    
+                    message_type = message.get('MessageType')
+                    metadata = message.get('Metadata', {})
+                    ais_message = message.get('Message', {})
+                    
+                    if message_type == 'ShipStaticData':
+                        await self.process_static_data(ais_message.get('ShipStaticData', {}), metadata)
+                    elif message_type == 'PositionReport':
+                        await self.process_position_report(ais_message.get('PositionReport', {}), metadata)
+                        
+                except json.JSONDecodeError as e:
+                    logger.debug(f"JSON decode error: {e}")
+                except Exception as e:
+                    logger.error(f"Error processing message: {e}")
+
+            async def process_static_data(self, static_data: Dict, metadata: Dict):
+                """Process vessel static data"""
+                mmsi = str(static_data.get('UserID') or metadata.get('MMSI', ''))
+                if not mmsi:
+                    return
+                
+                # Get existing vessel data or create new
+                vessel = self.vessel_database.get(mmsi, {})
+                
+                # Update vessel information
+                vessel.update({
+                    'mmsi': mmsi,
+                    'name': (static_data.get('Name') or '').strip() or vessel.get('name', 'Unknown'),
+                    'call_sign': (static_data.get('CallSign') or '').strip() or vessel.get('call_sign', 'Unknown'),
+                    'imo_number': static_data.get('ImoNumber') or vessel.get('imo_number'),
+                    'ship_type': static_data.get('Type') or vessel.get('ship_type'),
+                    'dimensions': static_data.get('Dimension') or vessel.get('dimensions', {}),
+                    'destination': (static_data.get('Destination') or '').strip() or vessel.get('destination', 'Unknown'),
+                    'max_draught': static_data.get('MaximumStaticDraught') or vessel.get('max_draught'),
+                    'last_static_update': datetime.now(timezone.utc).isoformat()
+                })
+                
+                # Estimate DWT from dimensions
+                if vessel['dimensions']:
+                    estimated_dwt = self.estimate_dwt_from_dimensions(vessel['dimensions'])
+                    if estimated_dwt:
+                        vessel['estimated_dwt'] = estimated_dwt
+                
+                self.vessel_database[mmsi] = vessel
+                
+                logger.info(f"Updated static data for {vessel['name']} ({mmsi}) - DWT: {vessel.get('estimated_dwt', 'Unknown')}")
+
+            async def process_position_report(self, position_data: Dict, metadata: Dict):
+                """Process vessel position reports"""
+                mmsi = str(position_data.get('UserID') or metadata.get('MMSI', ''))
+                if not mmsi:
+                    return
+                
+                # Ensure vessel exists in database
+                if mmsi not in self.vessel_database:
+                    self.vessel_database[mmsi] = {
+                        'mmsi': mmsi,
+                        'name': metadata.get('ShipName', 'Unknown'),
+                        'ship_type': None,
+                        'estimated_dwt': None
+                    }
+                
+                vessel = self.vessel_database[mmsi]
+                
+                # Check if this is a target vessel
+                if not self.is_target_vessel(mmsi, vessel):
+                    return
+                
+                # Create position record
+                record = {
+                    'timestamp': datetime.now(timezone.utc).isoformat(),
+                    'mmsi': mmsi,
+                    'vessel_name': vessel.get('name', metadata.get('ShipName', 'Unknown')),
+                    'latitude': position_data.get('Latitude'),
+                    'longitude': position_data.get('Longitude'),
+                    'speed_knots': position_data.get('Sog', 0),
+                    'course_degrees': position_data.get('Cog', 0),
+                    'heading_degrees': position_data.get('TrueHeading'),
+                    'navigation_status': position_data.get('NavigationalStatus'),
+                    'ship_type': vessel.get('ship_type'),
+                    'estimated_dwt': vessel.get('estimated_dwt'),
+                    'call_sign': vessel.get('call_sign', 'Unknown'),
+                    'destination': vessel.get('destination', 'Unknown'),
+                    'rate_of_turn': position_data.get('RateOfTurn'),
+                    'position_accuracy': position_data.get('PositionAccuracy', False),
+                    'imo_number': vessel.get('imo_number'),
+                    'max_draught': vessel.get('max_draught')
+                }
+                
+                # Filter out invalid coordinates
+                if (record['latitude'] is None or record['longitude'] is None or 
+                    abs(record['latitude']) > 90 or abs(record['longitude']) > 180):
+                    return
+                
+                self.collected_data.append(record)
+                
+                dwt_str = f"{vessel.get('estimated_dwt'):,}" if vessel.get('estimated_dwt') else 'Unknown'
+                logger.info(f"Collected position for {record['vessel_name']} ({mmsi}) - DWT: {dwt_str} - Speed: {record['speed_knots']} kts")
+
+            async def save_data(self):
+                """Save collected data to CSV file - APPEND ONLY, never delete old data"""
+                if not self.collected_data:
+                    logger.info("No new data to save")
+                    return
+                
+                # Create DataFrame from collected data
+                new_df = pd.DataFrame(self.collected_data)
+                
+                # Ensure data directory exists
+                os.makedirs(os.path.dirname(self.csv_file_path), exist_ok=True)
+                
+                # APPEND to existing CSV or create new one
+                if os.path.exists(self.csv_file_path):
+                    try:
+                        # Load existing data to check for exact duplicates only
+                        existing_df = pd.read_csv(self.csv_file_path)
+                        
+                        # Remove only EXACT duplicates (same mmsi, timestamp, lat, lon)
+                        # This allows multiple positions for same vessel at different times
+                        merge_cols = ['mmsi', 'timestamp', 'latitude', 'longitude']
+                        
+                        # Find truly new records (not exact duplicates)
+                        merged = new_df.merge(existing_df[merge_cols], on=merge_cols, how='left', indicator=True)
+                        truly_new = new_df[merged['_merge'] == 'left_only']
+                        
+                        if len(truly_new) > 0:
+                            # Append only new records
+                            truly_new.to_csv(self.csv_file_path, mode='a', header=False, index=False)
+                            logger.info(f"Appended {len(truly_new)} NEW records to {self.csv_file_path}")
+                            
+                            # Log total file size
+                            total_lines = sum(1 for line in open(self.csv_file_path)) - 1  # -1 for header
+                            logger.info(f"Total records in CSV: {total_lines:,}")
+                        else:
+                            logger.info("No new unique records to append (all were duplicates)")
+                            
+                    except Exception as e:
+                        logger.warning(f"Could not load existing CSV, creating new: {e}")
+                        new_df.to_csv(self.csv_file_path, index=False)
+                        logger.info(f"Created new CSV with {len(new_df)} records")
+                else:
+                    # Create new file
+                    new_df.to_csv(self.csv_file_path, index=False)
+                    logger.info(f"Created new CSV with {len(new_df)} records")
+                
+                # Save/update vessel database (this can be fully updated each time)
+                vessel_list = list(self.vessel_database.values())
+                with open(self.vessel_db_path, 'w') as f:
+                    json.dump(vessel_list, f, indent=2, default=str)
+                logger.info(f"Updated vessel database with {len(vessel_list)} vessels")
+
+            async def run(self):
+                """Main execution loop"""
+                logger.info(f"Starting AIS data collection for {self.duration_minutes} minutes")
+                logger.info(f"Target DWT range: {self.dwt_min:,} - {self.dwt_max:,}")
+                
+                uri = "wss://stream.aisstream.io/v0/stream"
+                
+                try:
+                    async with websockets.connect(uri) as websocket:
+                        logger.info("Connected to AISStream")
+                        
+                        # Subscribe to global AIS data
+                        subscription = {
+                            "APIKey": self.api_key,
+                            "BoundingBoxes": [[[-90, -180], [90, 180]]],  # Global coverage
+                            "FilterMessageTypes": ["PositionReport", "ShipStaticData"]
+                        }
+                        
+                        await websocket.send(json.dumps(subscription))
+                        logger.info("Subscription sent")
+                        
+                        # Set up timeout
+                        end_time = asyncio.get_event_loop().time() + (self.duration_minutes * 60)
+                        
+                        try:
+                            while self.is_running and asyncio.get_event_loop().time() < end_time:
+                                try:
+                                    # Wait for message with timeout
+                                    message = await asyncio.wait_for(websocket.recv(), timeout=30.0)
+                                    await self.handle_message(message)
+                                except asyncio.TimeoutError:
+                                    logger.debug("No message received in 30 seconds, continuing...")
+                                    continue
+                                except websockets.exceptions.ConnectionClosed:
+                                    logger.warning("WebSocket connection closed")
+                                    break
+                                    
+                        except KeyboardInterrupt:
+                            logger.info("Interrupted by user")
+                        finally:
+                            await self.save_data()
+                            
+                except Exception as e:
+                    logger.error(f"Connection error: {e}")
+                    # Try to save any collected data
+                    await self.save_data()
+                    raise
+
+            def print_summary(self):
+                """Print collection summary"""
+                target_vessels = [v for v in self.vessel_database.values() 
+                                if self.is_target_vessel(v['mmsi'], v)]
+                
+                print(f"\n{'='*60}")
+                print("AIS DATA COLLECTION SUMMARY")
+                print(f"{'='*60}")
+                print(f"Collection Duration: {self.duration_minutes} minutes")
+                print(f"New Position Records: {len(self.collected_data):,}")
+                print(f"Total Vessels in Database: {len(self.vessel_database):,}")
+                print(f"Target Vessels (Dry Bulk {self.dwt_min:,}-{self.dwt_max:,} DWT): {len(target_vessels):,}")
+                
+                if target_vessels:
+                    dwt_values = [v['estimated_dwt'] for v in target_vessels if v.get('estimated_dwt')]
+                    if dwt_values:
+                        print(f"Average DWT of targets: {sum(dwt_values)/len(dwt_values):,.0f}")
+                        print(f"DWT Range of targets: {min(dwt_values):,} - {max(dwt_values):,}")
+
+        async def main():
+            # Get configuration from environment variables
+            api_key = os.getenv('AISSTREAM_API_KEY')
+            if not api_key:
+                logger.error("AISSTREAM_API_KEY environment variable not set")
+                sys.exit(1)
+            
+            duration_minutes = int(os.getenv('DURATION_MINUTES', '10'))
+            dwt_min = int(os.getenv('DWT_MIN', '40000'))
+            dwt_max = int(os.getenv('DWT_MAX', '100000'))
+            
+            collector = AISDataCollector(api_key, duration_minutes, dwt_min, dwt_max)
+            
+            try:
+                await collector.run()
+                collector.print_summary()
+            except Exception as e:
+                logger.error(f"Fatal error: {e}")
+                sys.exit(1)
+
+        if __name__ == "__main__":
+            asyncio.run(main())
+        EOF
+
+    - name: Run AIS Scraper
+      env:
+        DURATION_MINUTES: ${{ github.event.inputs.duration_minutes || '10' }}
+        DWT_MIN: ${{ github.event.inputs.dwt_min || '40000' }}
+        DWT_MAX: ${{ github.event.inputs.dwt_max || '100000' }}
+      run: python scraper.py
+      
+    - name: Display data collection summary
+      run: |
+        echo "=== DATA COLLECTION SUMMARY ==="
+        echo "Collection frequency: Every 6 hours (optimal for 12-15kt vessels)"
+        echo "Session duration: 10 minutes per run"
+        echo ""
+        if [ -f "ais_data/dry_bulk_vessels.csv" ]; then
+          total_lines=$(wc -l < ais_data/dry_bulk_vessels.csv)
+          echo "📊 Main CSV file: $((total_lines - 1)) position records"
+          echo "📁 File size: $(du -h ais_data/dry_bulk_vessels.csv | cut -f1)"
+          echo "📅 Data age: $(stat -c %y ais_data/dry_bulk_vessels.csv | cut -d' ' -f1) to $(date +%Y-%m-%d)"
+          echo ""
+          echo "🚢 Latest vessel positions (last 3):"
+          tail -3 ais_data/dry_bulk_vessels.csv | while read line; do
+            echo "   $line"
+          done
+        else
+          echo "❌ No CSV file found"
+        fi
+        
+        if [ -f "ais_data/vessel_database.json" ]; then
+          vessel_count=$(grep -o '"mmsi"' ais_data/vessel_database.json | wc -l)
+          echo ""
+          echo "🗃️  Vessel database: $vessel_count unique vessels tracked"
+        fi
+        
+        echo ""
+        echo "ℹ️  Data Collection Strategy:"
+        echo "   • Every 6 hours = ~25-30nm vessel movement between samples"  
+        echo "   • 10min sessions = captures multiple position updates per vessel"
+        echo "   • Appends new data, never deletes historical positions"
+        echo "   • Tracks dry bulk carriers 40,000-100,000 DWT globally"
+
+    - name: Commit and push data
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action AIS Scraper"
+        
+        echo "Current git status:"
+        git status
+        
+        # Force sync with remote
+        git fetch origin main || echo "Fetch failed, continuing..."
+        git reset --hard origin/main || echo "Reset failed, continuing..."
+        
+        # Check if data directory exists and has content
+        if [ -d "ais_data" ] && [ "$(ls -A ais_data)" ]; then
+          echo "Data directory contents:"
+          ls -la ais_data/
+          
+          # Re-add the data files
+          git add ais_data/ || echo "Git add failed"
+          
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Changes detected, committing..."
+            git commit -m "Update AIS data - $(date '+%Y-%m-%d %H:%M:%S UTC')" || echo "Commit failed"
+            git push origin main || echo "Push failed"
+            echo "Data commit attempted"
+          else
+            echo "No changes detected in git status"
+          fi
+        else
+          echo "ERROR: No ais_data directory or it's empty!"
+        fi
+        
+    - name: Upload data as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ais-data-backup-${{ github.run_number }}
+        path: ais_data/
+        retention-days: 90
