@@ -1,0 +1,10 @@
+# AIS Data Scraper Dependencies
+websockets==11.0.3
+pandas==2.0.3
+python-dateutil==2.8.2
+pytz==2023.3
+
+# Analysis Script Additional Dependencies
+matplotlib==3.7.2
+seaborn==0.12.2
+numpy==1.24.3
