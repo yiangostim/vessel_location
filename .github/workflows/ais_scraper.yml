@@ -6,6 +6,7 @@ on:
     - cron: '0 */6 * * *'
   workflow_dispatch:
     inputs:
+    inputs:
               duration_minutes:
         description: 'Duration to scrape in minutes'
         required: false
