@@ -2,14 +2,14 @@ name: AIS Dry Bulk Vessel Scraper
 
 on:
   schedule:
-    # Run every 6 hours
+    # Run every 6 hours (at 00:00, 06:00, 12:00, 18:00 UTC)
     - cron: '0 */6 * * *'
   workflow_dispatch:
     inputs:
-      duration_minutes:
+              duration_minutes:
         description: 'Duration to scrape in minutes'
         required: false
-        default: '10'
+        default: '120'
         type: string
       dwt_min:
         description: 'Minimum DWT'
@@ -372,7 +372,7 @@ jobs:
 
     - name: Run AIS scraper
       env:
-        DURATION_MINUTES: ${{ github.event.inputs.duration_minutes || '10' }}
+        DURATION_MINUTES: ${{ github.event.inputs.duration_minutes || '120' }}
         DWT_MIN: ${{ github.event.inputs.dwt_min || '40000' }}
         DWT_MAX: ${{ github.event.inputs.dwt_max || '100000' }}
       run: python scraper.py
