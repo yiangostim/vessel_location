@@ -2,12 +2,10 @@ name: AIS Dry Bulk Vessel Scraper
 
 on:
   schedule:
-    # Run every 6 hours (at 00:00, 06:00, 12:00, 18:00 UTC)
     - cron: '0 */6 * * *'
   workflow_dispatch:
     inputs:
-    inputs:
-              duration_minutes:
+      duration_minutes:
         description: 'Duration to scrape in minutes'
         required: false
         default: '120'
@@ -81,7 +79,7 @@ jobs:
         logger = logging.getLogger(__name__)
 
         class AISCollector:
-            def __init__(self, api_key, duration_minutes=10, dwt_min=40000, dwt_max=100000):
+            def __init__(self, api_key, duration_minutes=120, dwt_min=40000, dwt_max=100000):
                 self.api_key = api_key
                 self.duration_minutes = duration_minutes
                 self.dwt_min = dwt_min
@@ -92,8 +90,7 @@ jobs:
                 self.csv_file = "ais_data/dry_bulk_vessels.csv"
                 self.vessel_db_file = "ais_data/vessel_database.json"
                 
-                # Dry bulk vessel types (AIS ship and cargo type codes)
-                self.dry_bulk_types = {70, 71, 72, 73, 74, 79}  # Various cargo ship types
+                self.dry_bulk_types = {70, 71, 72, 73, 74, 79}
                 
                 self.load_existing_data()
                 signal.signal(signal.SIGINT, self.signal_handler)
@@ -104,7 +101,6 @@ jobs:
                 self.is_running = False
 
             def load_existing_data(self):
-                """Load existing vessel database"""
                 if os.path.exists(self.vessel_db_file):
                     try:
                         with open(self.vessel_db_file, 'r') as f:
@@ -115,7 +111,6 @@ jobs:
                         logger.warning(f"Could not load vessel database: {e}")
 
             def estimate_dwt(self, dimensions):
-                """Estimate DWT from vessel dimensions"""
                 try:
                     if not dimensions:
                         return None
@@ -126,7 +121,6 @@ jobs:
                     if length <= 0 or width <= 0:
                         return None
                     
-                    # DWT estimation formula for bulk carriers
                     if length < 150:
                         dwt_factor = 0.75
                     elif length < 200:
@@ -143,23 +137,18 @@ jobs:
                     return None
 
             def is_target_vessel(self, vessel_data):
-                """Check if vessel matches our criteria"""
                 ship_type = vessel_data.get('ship_type')
                 
-                # Check ship type first
                 if ship_type and ship_type not in self.dry_bulk_types:
                     return False
                 
-                # Check DWT range
                 estimated_dwt = vessel_data.get('estimated_dwt')
                 if estimated_dwt:
                     return self.dwt_min <= estimated_dwt <= self.dwt_max
                 
-                # If no clear type or DWT, be inclusive for potential bulk carriers
                 return True
 
             async def handle_message(self, message_data):
-                """Process incoming AIS messages"""
                 try:
                     message = json.loads(message_data)
                     
@@ -178,7 +167,6 @@ jobs:
                     logger.debug(f"Error processing message: {e}")
 
             async def process_static_data(self, message):
-                """Process vessel static data"""
                 try:
                     metadata = message.get('Metadata', {})
                     static_data = message.get('Message', {}).get('ShipStaticData', {})
@@ -201,7 +189,6 @@ jobs:
                         'last_static_update': datetime.now(timezone.utc).isoformat()
                     })
                     
-                    # Estimate DWT
                     if vessel['dimensions']:
                         estimated_dwt = self.estimate_dwt(vessel['dimensions'])
                         if estimated_dwt:
@@ -215,7 +202,6 @@ jobs:
                     logger.debug(f"Error processing static data: {e}")
 
             async def process_position_report(self, message):
-                """Process vessel position reports"""
                 try:
                     metadata = message.get('Metadata', {})
                     position_data = message.get('Message', {}).get('PositionReport', {})
@@ -224,7 +210,6 @@ jobs:
                     if not mmsi:
                         return
                     
-                    # Ensure vessel exists in database
                     if mmsi not in self.vessel_database:
                         self.vessel_database[mmsi] = {
                             'mmsi': mmsi,
@@ -235,18 +220,15 @@ jobs:
                     
                     vessel = self.vessel_database[mmsi]
                     
-                    # Check if this is a target vessel
                     if not self.is_target_vessel(vessel):
                         return
                     
-                    # Validate coordinates
                     lat = position_data.get('Latitude')
                     lon = position_data.get('Longitude')
                     
                     if lat is None or lon is None or abs(lat) > 90 or abs(lon) > 180:
                         return
                     
-                    # Create position record
                     record = {
                         'timestamp': datetime.now(timezone.utc).isoformat(),
                         'mmsi': mmsi,
@@ -274,22 +256,18 @@ jobs:
                     logger.debug(f"Error processing position report: {e}")
 
             async def save_data(self):
-                """Save collected data"""
                 if not self.collected_data:
                     logger.info("No new data to save")
                     return
                 
                 new_df = pd.DataFrame(self.collected_data)
                 
-                # Ensure directory exists
                 os.makedirs(os.path.dirname(self.csv_file), exist_ok=True)
                 
-                # Handle CSV file
                 if os.path.exists(self.csv_file):
                     try:
                         existing_df = pd.read_csv(self.csv_file)
                         
-                        # Remove exact duplicates
                         merge_cols = ['mmsi', 'timestamp', 'latitude', 'longitude']
                         merged = new_df.merge(existing_df[merge_cols], on=merge_cols, how='left', indicator=True)
                         new_records = new_df[merged['_merge'] == 'left_only']
@@ -307,14 +285,12 @@ jobs:
                     new_df.to_csv(self.csv_file, index=False)
                     logger.info(f"Created new CSV with {len(new_df)} records")
                 
-                # Save vessel database
                 vessel_list = list(self.vessel_database.values())
                 with open(self.vessel_db_file, 'w') as f:
                     json.dump(vessel_list, f, indent=2, default=str)
                 logger.info(f"Updated vessel database with {len(vessel_list)} vessels")
 
             async def run(self):
-                """Main execution loop"""
                 logger.info(f"Starting AIS collection for {self.duration_minutes} minutes")
                 logger.info(f"Target DWT range: {self.dwt_min:,} - {self.dwt_max:,}")
                 
@@ -324,7 +300,6 @@ jobs:
                     async with websockets.connect(uri) as websocket:
                         logger.info("Connected to AISStream")
                         
-                        # Subscribe to messages
                         subscription = {
                             "APIKey": self.api_key,
                             "BoundingBoxes": [[[-90, -180], [90, 180]]],
@@ -334,7 +309,6 @@ jobs:
                         await websocket.send(json.dumps(subscription))
                         logger.info("Subscription sent")
                         
-                        # Collection loop
                         end_time = asyncio.get_event_loop().time() + (self.duration_minutes * 60)
                         
                         while self.is_running and asyncio.get_event_loop().time() < end_time:
@@ -360,7 +334,7 @@ jobs:
                 logger.error("AISSTREAM_API_KEY not set")
                 sys.exit(1)
             
-            duration = int(os.getenv('DURATION_MINUTES', '10'))
+            duration = int(os.getenv('DURATION_MINUTES', '120'))
             dwt_min = int(os.getenv('DWT_MIN', '40000'))
             dwt_max = int(os.getenv('DWT_MAX', '100000'))
             
