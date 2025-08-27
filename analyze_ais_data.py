@@ -23,7 +23,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 class AISDataCollector:
-    def __init__(self, api_key: str, duration_minutes: int = 10, dwt_min: int = 40000, dwt_max: int = 100000):
+    def __init__(self, api_key: str, duration_minutes: int = 120, dwt_min: int = 40000, dwt_max: int = 100000):
         self.api_key = api_key
         self.duration_minutes = duration_minutes
         self.dwt_min = dwt_min
@@ -363,7 +363,7 @@ async def main():
         print("export AISSTREAM_API_KEY='your_api_key_here'")
         sys.exit(1)
     
-    duration_minutes = int(os.getenv('DURATION_MINUTES', '10'))
+    duration_minutes = int(os.getenv('DURATION_MINUTES', '120'))
     dwt_min = int(os.getenv('DWT_MIN', '40000'))
     dwt_max = int(os.getenv('DWT_MAX', '100000'))
     
