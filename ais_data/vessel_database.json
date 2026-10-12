@@ -624,9 +624,9 @@
       "C": 2,
       "D": 24
     },
-    "destination": "ESBCN",
+    "destination": "ESPMI",
     "max_draught": 6.2,
-    "last_static_update": "2026-10-11T04:27:22.251305+00:00"
+    "last_static_update": "2026-10-12T04:21:56.208438+00:00"
   },
   {
     "mmsi": "244314925",
@@ -6235,7 +6235,7 @@
     },
     "destination": "WSF TERMINAL",
     "max_draught": 5.2,
-    "last_static_update": "2026-10-11T04:27:59.391762+00:00"
+    "last_static_update": "2026-10-12T04:22:18.797659+00:00"
   },
   {
     "mmsi": "261009080",
@@ -9499,7 +9499,7 @@
     },
     "destination": "SKJAERHALDEN",
     "max_draught": 2,
-    "last_static_update": "2026-10-11T04:37:10.398636+00:00"
+    "last_static_update": "2026-10-12T04:22:06.746613+00:00"
   },
   {
     "mmsi": "244860471",
@@ -12531,18 +12531,18 @@
     "mmsi": "244129132",
     "name": "SENTO",
     "ship_type": 79,
-    "estimated_dwt": 11880,
+    "estimated_dwt": 22770,
     "call_sign": "PE8256",
     "imo_number": null,
     "dimensions": {
       "A": 105,
       "B": 5,
-      "C": 11,
-      "D": 1
+      "C": 23,
+      "D": 0
     },
-    "destination": "BTT CONT VOSSENBERG",
+    "destination": "PRINSES MARGRIETHAVE",
     "max_draught": 2,
-    "last_static_update": "2026-10-11T04:40:25.859905+00:00"
+    "last_static_update": "2026-10-12T04:22:19.679793+00:00"
   },
   {
     "mmsi": "367550000",
@@ -14734,7 +14734,7 @@
     },
     "destination": "DELFZIJL",
     "max_draught": 1.6,
-    "last_static_update": "2026-10-11T04:37:46.333404+00:00",
+    "last_static_update": "2026-10-12T04:21:49.967193+00:00",
     "estimated_dwt": 10000
   },
   {
@@ -18152,7 +18152,7 @@
     },
     "destination": "ROTTERDAM",
     "max_draught": 3.1,
-    "last_static_update": "2026-10-11T04:40:00.846958+00:00"
+    "last_static_update": "2026-10-12T04:22:05.705482+00:00"
   },
   {
     "mmsi": "229678000",
@@ -21031,7 +21031,7 @@
     },
     "destination": "NIEUWEGEIN",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:19:50.850151+00:00"
+    "last_static_update": "2026-10-12T04:22:18.799958+00:00"
   },
   {
     "mmsi": "244700504",
@@ -22492,7 +22492,7 @@
     },
     "destination": "@@@@@@@@@A",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:34:06.096511+00:00"
+    "last_static_update": "2026-10-12T04:21:52.725884+00:00"
   },
   {
     "mmsi": "228028900",
@@ -28261,7 +28261,7 @@
     },
     "destination": "HYDROGRAPHIC SURVEY",
     "max_draught": 2,
-    "last_static_update": "2026-10-11T04:25:37.959036+00:00"
+    "last_static_update": "2026-10-12T04:22:14.669049+00:00"
   },
   {
     "mmsi": "257516800",
@@ -32407,9 +32407,9 @@
       "C": 5,
       "D": 7
     },
-    "destination": "HAFEN MANNESMANN",
+    "destination": "DINTELHAVEN",
     "max_draught": 1.5,
-    "last_static_update": "2026-10-10T04:21:35.636074+00:00"
+    "last_static_update": "2026-10-12T04:22:24.483730+00:00"
   },
   {
     "mmsi": "235040596",
@@ -38731,7 +38731,7 @@
     },
     "destination": "Unknown",
     "max_draught": 1,
-    "last_static_update": "2026-10-11T04:33:52.672049+00:00"
+    "last_static_update": "2026-10-12T04:21:54.037453+00:00"
   },
   {
     "mmsi": "257108000",
@@ -39683,7 +39683,7 @@
     },
     "destination": "WERKENDAP",
     "max_draught": 2.5,
-    "last_static_update": "2026-10-11T04:33:55.654492+00:00"
+    "last_static_update": "2026-10-12T04:22:15.672004+00:00"
   },
   {
     "mmsi": "211411940",
@@ -42488,7 +42488,7 @@
     },
     "destination": "PUTTERSHOEK>KIL>>>]",
     "max_draught": 1.5,
-    "last_static_update": "2026-10-11T04:27:52.017488+00:00"
+    "last_static_update": "2026-10-12T04:22:11.324597+00:00"
   },
   {
     "mmsi": "218041230",
@@ -44562,7 +44562,7 @@
     },
     "destination": "BRISBANE",
     "max_draught": 5.5,
-    "last_static_update": "2026-10-11T04:21:48.920069+00:00"
+    "last_static_update": "2026-10-12T04:22:09.241070+00:00"
   },
   {
     "mmsi": "316012406",
@@ -45276,7 +45276,7 @@
     },
     "destination": "LONDON GATEWAY",
     "max_draught": 5.5,
-    "last_static_update": "2026-10-11T04:40:50.481962+00:00"
+    "last_static_update": "2026-10-12T04:22:16.784667+00:00"
   },
   {
     "mmsi": "636019648",
@@ -49354,7 +49354,7 @@
     },
     "destination": "@@@@@@@@@C0",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:40:19.770488+00:00"
+    "last_static_update": "2026-10-12T04:22:26.383980+00:00"
   },
   {
     "mmsi": "538008236",
@@ -49762,7 +49762,7 @@
     },
     "destination": "TAMPA BAY",
     "max_draught": 2,
-    "last_static_update": "2026-10-11T04:39:54.709007+00:00"
+    "last_static_update": "2026-10-12T04:22:04.784450+00:00"
   },
   {
     "mmsi": "354898000",
@@ -54963,7 +54963,7 @@
     },
     "destination": "PALMA",
     "max_draught": 3.1,
-    "last_static_update": "2026-10-11T04:40:02.763238+00:00"
+    "last_static_update": "2026-10-12T04:22:03.260730+00:00"
   },
   {
     "mmsi": "244043389",
@@ -55830,7 +55830,7 @@
     },
     "destination": "@@@@@BPEN",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:10:09.681990+00:00"
+    "last_static_update": "2026-10-12T04:22:15.191985+00:00"
   },
   {
     "mmsi": "256856000",
@@ -56186,7 +56186,7 @@
     },
     "destination": "NLAMS",
     "max_draught": 5.7,
-    "last_static_update": "2026-10-11T04:40:13.023033+00:00",
+    "last_static_update": "2026-10-12T04:22:14.668371+00:00",
     "estimated_dwt": 10296
   },
   {
@@ -56476,7 +56476,7 @@
     },
     "destination": "BEOST",
     "max_draught": 2.4,
-    "last_static_update": "2026-10-11T04:32:36.253618+00:00"
+    "last_static_update": "2026-10-12T04:21:51.842786+00:00"
   },
   {
     "mmsi": "244660994",
@@ -57088,7 +57088,7 @@
     },
     "destination": "Unknown",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:32:47.501897+00:00"
+    "last_static_update": "2026-10-12T04:22:23.177080+00:00"
   },
   {
     "mmsi": "244133678",
@@ -62391,7 +62391,7 @@
     },
     "destination": "ROSTOCK",
     "max_draught": 2.4,
-    "last_static_update": "2026-10-10T21:16:10.473930+00:00"
+    "last_static_update": "2026-10-12T04:22:26.384163+00:00"
   },
   {
     "mmsi": "244182958",
@@ -62561,7 +62561,7 @@
     },
     "destination": "@@@@@@@@@C?ZO>4_?;Q<",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:39:25.630573+00:00"
+    "last_static_update": "2026-10-12T04:22:26.385653+00:00"
   },
   {
     "mmsi": "205453690",
@@ -67172,7 +67172,7 @@
     },
     "destination": "DEN HELDER",
     "max_draught": 1.8,
-    "last_static_update": "2026-10-11T04:40:07.578368+00:00"
+    "last_static_update": "2026-10-12T04:22:11.794149+00:00"
   },
   {
     "mmsi": "477648700",
@@ -68515,7 +68515,7 @@
     },
     "destination": "Unknown",
     "max_draught": 1.9,
-    "last_static_update": "2026-10-10T21:21:59.364810+00:00"
+    "last_static_update": "2026-10-12T04:22:11.794429+00:00"
   },
   {
     "mmsi": "331143000",
@@ -69652,9 +69652,9 @@
       "C": 6,
       "D": 8
     },
-    "destination": "NLEEM",
-    "max_draught": 5.2,
-    "last_static_update": "2026-10-11T04:28:35.154629+00:00"
+    "destination": "NLHAR",
+    "max_draught": 4.2,
+    "last_static_update": "2026-10-12T04:22:22.669764+00:00"
   },
   {
     "mmsi": "311000760",
@@ -70895,7 +70895,7 @@
     },
     "destination": "MANLY",
     "max_draught": 2,
-    "last_static_update": "2026-10-11T04:27:46.767929+00:00"
+    "last_static_update": "2026-10-12T04:21:59.375839+00:00"
   },
   {
     "mmsi": "212396000",
@@ -73428,7 +73428,7 @@
     },
     "destination": "PORTSMOUTH",
     "max_draught": 4.2,
-    "last_static_update": "2026-10-10T21:16:12.989144+00:00"
+    "last_static_update": "2026-10-12T04:22:26.385904+00:00"
   },
   {
     "mmsi": "563186600",
@@ -74142,7 +74142,7 @@
     },
     "destination": "R.DAM HAVENWERK",
     "max_draught": 2,
-    "last_static_update": "2026-10-11T04:37:30.982943+00:00"
+    "last_static_update": "2026-10-12T04:21:51.841381+00:00"
   },
   {
     "mmsi": "244750202",
@@ -74584,7 +74584,7 @@
     },
     "destination": "@@@@@C",
     "max_draught": 2.3,
-    "last_static_update": "2026-10-06T13:03:26.274704+00:00"
+    "last_static_update": "2026-10-12T04:22:26.386464+00:00"
   },
   {
     "mmsi": "244670863",
@@ -74958,7 +74958,7 @@
     },
     "destination": "Unknown",
     "max_draught": 0.8,
-    "last_static_update": "2026-10-11T04:19:44.628668+00:00"
+    "last_static_update": "2026-10-12T04:22:13.444002+00:00"
   },
   {
     "mmsi": "316001481",
@@ -78374,7 +78374,7 @@
     },
     "destination": "Unknown",
     "max_draught": 1,
-    "last_static_update": "2026-10-11T04:34:06.379678+00:00"
+    "last_static_update": "2026-10-12T04:22:12.848739+00:00"
   },
   {
     "mmsi": "244820141",
@@ -80142,7 +80142,7 @@
     },
     "destination": "MONNICKENDAM",
     "max_draught": 1.2,
-    "last_static_update": "2026-10-11T04:34:51.965346+00:00"
+    "last_static_update": "2026-10-12T04:21:54.814283+00:00"
   },
   {
     "mmsi": "265044670",
@@ -81178,7 +81178,7 @@
     },
     "destination": "OSTEND",
     "max_draught": 1.2,
-    "last_static_update": "2026-10-11T04:38:13.036949+00:00",
+    "last_static_update": "2026-10-12T04:22:22.180273+00:00",
     "estimated_dwt": 10000
   },
   {
@@ -81434,7 +81434,7 @@
     },
     "destination": "SAR",
     "max_draught": 1.4,
-    "last_static_update": "2026-10-11T04:38:19.317421+00:00"
+    "last_static_update": "2026-10-12T04:22:28.171881+00:00"
   },
   {
     "mmsi": "211276280",
@@ -81553,7 +81553,7 @@
     },
     "destination": "PL ELB",
     "max_draught": 2.4,
-    "last_static_update": "2026-10-11T04:14:29.816380+00:00"
+    "last_static_update": "2026-10-12T04:22:15.193686+00:00"
   },
   {
     "mmsi": "211227580",
@@ -81672,7 +81672,7 @@
     },
     "destination": "COASTAL TOWING",
     "max_draught": 4.3,
-    "last_static_update": "2026-10-11T04:27:47.050957+00:00"
+    "last_static_update": "2026-10-12T04:22:03.260397+00:00"
   },
   {
     "mmsi": "225995883",
@@ -81689,7 +81689,7 @@
     },
     "destination": "IBIZA",
     "max_draught": 3.2,
-    "last_static_update": "2026-10-11T04:33:44.275566+00:00"
+    "last_static_update": "2026-10-12T04:22:08.458782+00:00"
   },
   {
     "mmsi": "244393464",
@@ -86483,7 +86483,7 @@
     },
     "destination": "Unknown",
     "max_draught": 2.7,
-    "last_static_update": "2026-10-11T04:26:08.065311+00:00"
+    "last_static_update": "2026-10-12T04:22:24.482614+00:00"
   },
   {
     "mmsi": "240597300",
@@ -90637,7 +90637,7 @@
     },
     "destination": "IJMUIDEN-AMSTERDAM",
     "max_draught": 5.2,
-    "last_static_update": "2026-10-11T04:40:02.268869+00:00"
+    "last_static_update": "2026-10-12T04:22:06.380058+00:00"
   },
   {
     "mmsi": "236745000",
@@ -90773,7 +90773,7 @@
     },
     "destination": "Unknown",
     "max_draught": 2.4,
-    "last_static_update": "2026-10-11T04:39:55.046118+00:00"
+    "last_static_update": "2026-10-12T04:22:03.955489+00:00"
   },
   {
     "mmsi": "224959540",
@@ -91333,7 +91333,7 @@
     },
     "destination": "SEA",
     "max_draught": 3.4,
-    "last_static_update": "2026-10-11T04:40:15.430334+00:00",
+    "last_static_update": "2026-10-12T04:22:18.798694+00:00",
     "estimated_dwt": 10000
   },
   {
@@ -93238,7 +93238,7 @@
     },
     "destination": "ZWOLLE",
     "max_draught": 0.3,
-    "last_static_update": "2026-10-11T21:28:44.595698+00:00"
+    "last_static_update": "2026-10-12T04:22:18.799811+00:00"
   },
   {
     "mmsi": "259026980",
@@ -97018,7 +97018,7 @@
     },
     "destination": "ZOETERWOUDE",
     "max_draught": 1,
-    "last_static_update": "2026-10-11T04:36:33.805088+00:00"
+    "last_static_update": "2026-10-12T04:22:14.666982+00:00"
   },
   {
     "mmsi": "232032165",
@@ -98582,7 +98582,7 @@
     },
     "destination": "SEGOT",
     "max_draught": 2.6,
-    "last_static_update": "2026-10-11T04:40:21.587143+00:00"
+    "last_static_update": "2026-10-12T04:22:28.173657+00:00"
   },
   {
     "mmsi": "367309280",
@@ -98854,7 +98854,7 @@
     },
     "destination": "SCHEVENINGEN",
     "max_draught": 2.5,
-    "last_static_update": "2026-10-11T04:39:26.413028+00:00"
+    "last_static_update": "2026-10-12T04:21:51.843672+00:00"
   },
   {
     "mmsi": "255916114",
@@ -100231,7 +100231,7 @@
     },
     "destination": "HARBOUR TOWAGE",
     "max_draught": 5.5,
-    "last_static_update": "2026-10-11T04:22:07.199552+00:00"
+    "last_static_update": "2026-10-12T04:22:21.388056+00:00"
   },
   {
     "mmsi": "416092600",
@@ -103937,7 +103937,7 @@
     },
     "destination": "FISHING CPA 0.5",
     "max_draught": 3.3,
-    "last_static_update": "2026-10-11T04:34:14.722834+00:00"
+    "last_static_update": "2026-10-12T04:22:25.704190+00:00"
   },
   {
     "mmsi": "244820955",
@@ -104175,7 +104175,7 @@
     },
     "destination": "MONTEVIDEO",
     "max_draught": 4.5,
-    "last_static_update": "2026-10-11T04:27:47.573484+00:00"
+    "last_static_update": "2026-10-12T04:22:06.379733+00:00"
   },
   {
     "mmsi": "265044980",
@@ -104328,7 +104328,7 @@
     },
     "destination": "BENEDENZEESCHELDE",
     "max_draught": 1,
-    "last_static_update": "2026-10-11T04:34:06.381267+00:00"
+    "last_static_update": "2026-10-12T04:22:15.191388+00:00"
   },
   {
     "mmsi": "258960000",
@@ -105059,7 +105059,7 @@
     },
     "destination": "US^0WFH<>0WFF",
     "max_draught": 3,
-    "last_static_update": "2026-10-11T04:31:21.240692+00:00"
+    "last_static_update": "2026-10-12T04:22:14.667954+00:00"
   },
   {
     "mmsi": "235050566",
@@ -107371,7 +107371,7 @@
     },
     "destination": "VISGRONDEN",
     "max_draught": 1.4,
-    "last_static_update": "2026-10-11T04:40:10.087230+00:00"
+    "last_static_update": "2026-10-12T04:21:57.839262+00:00"
   },
   {
     "mmsi": "574004420",
@@ -107966,7 +107966,7 @@
     },
     "destination": "Unknown",
     "max_draught": 2,
-    "last_static_update": "2026-10-11T04:08:19.743850+00:00"
+    "last_static_update": "2026-10-12T04:22:22.181699+00:00"
   },
   {
     "mmsi": "232008821",
@@ -110873,7 +110873,7 @@
     },
     "destination": "GLUECKSTADT",
     "max_draught": 2.5,
-    "last_static_update": "2026-10-11T04:40:12.374529+00:00"
+    "last_static_update": "2026-10-12T04:22:21.386149+00:00"
   },
   {
     "mmsi": "316004659",
@@ -110907,7 +110907,7 @@
     },
     "destination": "HARBOUR DUTIES",
     "max_draught": 6,
-    "last_static_update": "2026-10-11T04:21:22.450168+00:00"
+    "last_static_update": "2026-10-12T04:22:11.324993+00:00"
   },
   {
     "mmsi": "366990360",
@@ -112929,7 +112929,7 @@
     },
     "destination": "HARNS",
     "max_draught": 1.2,
-    "last_static_update": "2026-10-11T04:34:15.672849+00:00"
+    "last_static_update": "2026-10-12T04:22:27.309098+00:00"
   },
   {
     "mmsi": "244376506",
@@ -113643,7 +113643,7 @@
     },
     "destination": "FT LAUDERDALE",
     "max_draught": 2.3,
-    "last_static_update": "2026-10-11T04:40:02.270639+00:00"
+    "last_static_update": "2026-10-12T04:22:04.077299+00:00"
   },
   {
     "mmsi": "235099364",
@@ -118368,7 +118368,7 @@
     },
     "destination": "@@@@@@",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:25:51.333094+00:00"
+    "last_static_update": "2026-10-12T04:21:52.247171+00:00"
   },
   {
     "mmsi": "224363230",
@@ -127293,7 +127293,7 @@
     },
     "destination": "VLIETHAVEN",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:39:58.266498+00:00"
+    "last_static_update": "2026-10-12T04:22:06.746776+00:00"
   },
   {
     "mmsi": "636014169",
@@ -136116,7 +136116,7 @@
     },
     "destination": "GED - ROS - GED",
     "max_draught": 5.5,
-    "last_static_update": "2026-10-11T04:37:50.894060+00:00"
+    "last_static_update": "2026-10-12T04:22:12.850145+00:00"
   },
   {
     "mmsi": "241437000",
@@ -137221,7 +137221,7 @@
     },
     "destination": "FISHING SKAGERAK",
     "max_draught": 12,
-    "last_static_update": "2026-10-11T04:16:02.994348+00:00"
+    "last_static_update": "2026-10-12T04:22:18.800767+00:00"
   },
   {
     "mmsi": "457900852",
@@ -139277,7 +139277,7 @@
     },
     "destination": "CAVAN",
     "max_draught": 11.8,
-    "last_static_update": "2026-10-11T04:40:15.430908+00:00",
+    "last_static_update": "2026-10-12T04:22:17.237887+00:00",
     "estimated_dwt": 90201
   },
   {
@@ -139805,7 +139805,7 @@
     },
     "destination": "@@@@@C?ZO>4_?;Q???-G",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:39:32.949301+00:00"
+    "last_static_update": "2026-10-12T04:22:12.270271+00:00"
   },
   {
     "mmsi": "247185400",
@@ -141828,7 +141828,7 @@
     },
     "destination": "<",
     "max_draught": 0.2,
-    "last_static_update": "2026-10-11T04:40:19.542034+00:00"
+    "last_static_update": "2026-10-12T04:22:18.800383+00:00"
   },
   {
     "mmsi": "244780384",
@@ -144667,7 +144667,7 @@
     },
     "destination": "HJEM TIL JENTENE",
     "max_draught": 3,
-    "last_static_update": "2026-10-11T04:27:53.349218+00:00"
+    "last_static_update": "2026-10-12T04:22:18.800255+00:00"
   },
   {
     "mmsi": "431401846",
@@ -145905,9 +145905,9 @@
       "C": 13,
       "D": 13
     },
-    "destination": "BEZEE",
+    "destination": "GBTEE",
     "max_draught": 6.4,
-    "last_static_update": "2026-10-10T21:23:27.085977+00:00"
+    "last_static_update": "2026-10-12T04:22:09.239337+00:00"
   },
   {
     "mmsi": "247538000",
@@ -150292,7 +150292,7 @@
     },
     "destination": "Unknown",
     "max_draught": null,
-    "last_static_update": "2026-10-03T11:14:31.025247+00:00"
+    "last_static_update": "2026-10-12T04:22:15.670709+00:00"
   },
   {
     "mmsi": "244700630",
@@ -159665,7 +159665,7 @@
     },
     "destination": "OUDE MAAS",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:27:44.192871+00:00"
+    "last_static_update": "2026-10-12T04:21:53.071640+00:00"
   },
   {
     "mmsi": "566946000",
@@ -164102,7 +164102,7 @@
     },
     "destination": "Unknown",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:40:19.544561+00:00"
+    "last_static_update": "2026-10-12T04:22:27.307532+00:00"
   },
   {
     "mmsi": "512005706",
@@ -165785,7 +165785,7 @@
     },
     "destination": "AMSTERDAM PETROLEUM",
     "max_draught": 3.3,
-    "last_static_update": "2026-10-11T04:40:17.203651+00:00"
+    "last_static_update": "2026-10-12T04:22:24.049963+00:00"
   },
   {
     "mmsi": "367081140",
@@ -166244,7 +166244,7 @@
     },
     "destination": "ROTTERDAM",
     "max_draught": 2.7,
-    "last_static_update": "2026-10-11T12:07:05.983407+00:00"
+    "last_static_update": "2026-10-12T04:21:58.742774+00:00"
   },
   {
     "mmsi": "275545000",
@@ -168794,7 +168794,7 @@
     },
     "destination": "GARTEN-STORFOSNA-LEK",
     "max_draught": 3.5,
-    "last_static_update": "2026-10-06T12:51:00.819081+00:00"
+    "last_static_update": "2026-10-12T04:21:51.106056+00:00"
   },
   {
     "mmsi": "257052230",
@@ -172567,7 +172567,7 @@
     },
     "destination": "ESPMI",
     "max_draught": 2.7,
-    "last_static_update": "2026-10-11T21:29:17.609883+00:00",
+    "last_static_update": "2026-10-12T04:22:19.168603+00:00",
     "estimated_dwt": 10000
   },
   {
@@ -174512,7 +174512,7 @@
     },
     "destination": "WESTHINDER ANCH",
     "max_draught": 7.5,
-    "last_static_update": "2026-10-11T04:22:06.571197+00:00"
+    "last_static_update": "2026-10-12T04:22:22.180142+00:00"
   },
   {
     "mmsi": "242294400",
@@ -178949,7 +178949,7 @@
     },
     "destination": "Unknown",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:37:43.422258+00:00"
+    "last_static_update": "2026-10-12T04:21:58.742020+00:00"
   },
   {
     "mmsi": "211781040",
@@ -178966,7 +178966,7 @@
     },
     "destination": "BERLIN",
     "max_draught": 1,
-    "last_static_update": "2026-10-11T04:27:58.074706+00:00"
+    "last_static_update": "2026-10-12T04:22:08.459849+00:00"
   },
   {
     "mmsi": "367780660",
@@ -183953,7 +183953,7 @@
     },
     "destination": "TOTAL PORT ARTHUR",
     "max_draught": 2.8,
-    "last_static_update": "2026-10-11T04:16:02.205607+00:00"
+    "last_static_update": "2026-10-12T04:22:14.669318+00:00"
   },
   {
     "mmsi": "367672370",
@@ -186639,7 +186639,7 @@
     },
     "destination": "DEBRB",
     "max_draught": 4.4,
-    "last_static_update": "2026-10-11T04:37:49.773946+00:00"
+    "last_static_update": "2026-10-12T04:22:16.781443+00:00"
   },
   {
     "mmsi": "256893000",
@@ -192758,7 +192758,7 @@
     },
     "destination": "DETROIT,MICHIGAN",
     "max_draught": 4.3,
-    "last_static_update": "2026-10-11T04:39:58.267324+00:00"
+    "last_static_update": "2026-10-12T04:22:06.379318+00:00"
   },
   {
     "mmsi": "316002956",
@@ -193999,7 +193999,7 @@
     },
     "destination": "HORTEN",
     "max_draught": 3.5,
-    "last_static_update": "2026-10-11T04:40:21.588576+00:00"
+    "last_static_update": "2026-10-12T04:21:50.728631+00:00"
   },
   {
     "mmsi": "258613000",
@@ -195954,7 +195954,7 @@
     },
     "destination": "MIDDENHAVEN VAN DE M",
     "max_draught": 1.2,
-    "last_static_update": "2026-10-11T04:39:57.085745+00:00"
+    "last_static_update": "2026-10-12T04:22:04.309114+00:00"
   },
   {
     "mmsi": "207343600",
@@ -196249,7 +196249,7 @@
     },
     "destination": "MILAZZO",
     "max_draught": 5.5,
-    "last_static_update": "2026-10-11T04:40:20.311002+00:00"
+    "last_static_update": "2026-10-12T04:22:24.481206+00:00"
   },
   {
     "mmsi": "244007308",
@@ -199223,7 +199223,7 @@
     },
     "destination": "LIVERPOOL",
     "max_draught": 4.3,
-    "last_static_update": "2026-10-11T04:28:13.757890+00:00"
+    "last_static_update": "2026-10-12T04:22:13.444217+00:00"
   },
   {
     "mmsi": "352355000",
@@ -206448,7 +206448,7 @@
     },
     "destination": "HALIFAX",
     "max_draught": 3,
-    "last_static_update": "2026-10-11T04:39:52.960775+00:00"
+    "last_static_update": "2026-10-12T04:21:58.741567+00:00"
   },
   {
     "mmsi": "244383859",
@@ -207485,7 +207485,7 @@
     },
     "destination": "Unknown",
     "max_draught": 2.8,
-    "last_static_update": "2026-10-11T04:39:47.079845+00:00"
+    "last_static_update": "2026-10-12T04:21:51.898493+00:00"
   },
   {
     "mmsi": "244284000",
@@ -208964,7 +208964,7 @@
     },
     "destination": "Unknown",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:40:10.646713+00:00"
+    "last_static_update": "2026-10-12T04:22:12.850778+00:00"
   },
   {
     "mmsi": "368410790",
@@ -212029,19 +212029,19 @@
   {
     "mmsi": "368348110",
     "name": "ERIN ELIZABETH",
-    "ship_type": 57,
-    "estimated_dwt": 46935,
+    "ship_type": 52,
+    "estimated_dwt": 10000,
     "call_sign": "WDM7628",
     "imo_number": 1273625,
     "dimensions": {
-      "A": 130,
+      "A": 11,
       "B": 19,
-      "C": 20,
-      "D": 15
+      "C": 8,
+      "D": 3
     },
-    "destination": "US^0LGX>0Y2V",
+    "destination": "NEW YORK, NY",
     "max_draught": null,
-    "last_static_update": "2026-10-10T17:00:48.018078+00:00"
+    "last_static_update": "2026-10-12T04:22:04.077118+00:00"
   },
   {
     "mmsi": "367198950",
@@ -212993,7 +212993,7 @@
     },
     "destination": "AMSTERDAM@@@+",
     "max_draught": 0.7,
-    "last_static_update": "2026-10-11T04:34:11.551306+00:00"
+    "last_static_update": "2026-10-12T04:22:15.672622+00:00"
   },
   {
     "mmsi": "258714000",
@@ -213571,7 +213571,7 @@
     },
     "destination": "GEULHAVEN BOTLEK",
     "max_draught": 1.8,
-    "last_static_update": "2026-10-11T04:16:41.483391+00:00"
+    "last_static_update": "2026-10-12T04:22:16.783408+00:00"
   },
   {
     "mmsi": "235072825",
@@ -214132,7 +214132,7 @@
     },
     "destination": "VASSOY - STAV - VASS",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:16:02.026873+00:00"
+    "last_static_update": "2026-10-12T04:22:18.798942+00:00"
   },
   {
     "mmsi": "244670478",
@@ -214608,7 +214608,7 @@
     },
     "destination": "KAMPEN",
     "max_draught": 2.2,
-    "last_static_update": "2026-10-11T04:15:05.501710+00:00"
+    "last_static_update": "2026-10-12T04:22:12.849945+00:00"
   },
   {
     "mmsi": "209184000",
@@ -214800,7 +214800,7 @@
   {
     "mmsi": "257872000",
     "name": "KEY VIENTO",
-    "ship_type": 85,
+    "ship_type": 83,
     "estimated_dwt": 11340,
     "call_sign": "LAYC8",
     "imo_number": 9010943,
@@ -214810,9 +214810,9 @@
       "C": 2,
       "D": 12
     },
-    "destination": "NO SOY",
-    "max_draught": 4.7,
-    "last_static_update": "2026-10-09T22:16:43.285438+00:00"
+    "destination": "NO LSU",
+    "max_draught": 5.5,
+    "last_static_update": "2026-10-12T04:22:13.442095+00:00"
   },
   {
     "mmsi": "257524500",
@@ -217260,7 +217260,7 @@
     },
     "destination": "ROTTERDAM",
     "max_draught": 2.1,
-    "last_static_update": "2026-10-11T04:40:07.853252+00:00"
+    "last_static_update": "2026-10-12T04:22:19.167940+00:00"
   },
   {
     "mmsi": "230355000",
@@ -220796,7 +220796,7 @@
     },
     "destination": "Unknown",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:40:17.818694+00:00"
+    "last_static_update": "2026-10-12T04:22:17.238696+00:00"
   },
   {
     "mmsi": "368009570",
@@ -220989,7 +220989,7 @@
     },
     "destination": "VLISSINGEN",
     "max_draught": 1.5,
-    "last_static_update": "2026-10-11T04:39:49.141048+00:00"
+    "last_static_update": "2026-10-12T04:21:58.920071+00:00"
   },
   {
     "mmsi": "257514900",
@@ -221295,7 +221295,7 @@
     },
     "destination": "WANNSUM",
     "max_draught": 2.5,
-    "last_static_update": "2026-10-11T04:33:51.835116+00:00"
+    "last_static_update": "2026-10-12T04:22:05.706055+00:00"
   },
   {
     "mmsi": "244620946",
@@ -222043,7 +222043,7 @@
     },
     "destination": "ANTARCTICSEA",
     "max_draught": 6.6,
-    "last_static_update": "2026-10-11T04:39:57.779480+00:00"
+    "last_static_update": "2026-10-12T04:21:57.911216+00:00"
   },
   {
     "mmsi": "277297000",
@@ -222281,7 +222281,7 @@
     },
     "destination": "TURKU-AIRISTO-TURKU",
     "max_draught": 3,
-    "last_static_update": "2026-10-11T04:39:52.652461+00:00"
+    "last_static_update": "2026-10-12T04:22:00.374297+00:00"
   },
   {
     "mmsi": "219000429",
@@ -222638,7 +222638,7 @@
     },
     "destination": "BULSTRINGEN",
     "max_draught": 0.3,
-    "last_static_update": "2026-10-10T11:58:06.170165+00:00"
+    "last_static_update": "2026-10-12T04:22:16.783798+00:00"
   },
   {
     "mmsi": "244730545",
@@ -229676,7 +229676,7 @@
     },
     "destination": "PALOUKIA-PERAMA",
     "max_draught": 2,
-    "last_static_update": "2026-10-05T13:42:36.630168+00:00"
+    "last_static_update": "2026-10-12T04:22:14.668241+00:00"
   },
   {
     "mmsi": "244615437",
@@ -234094,9 +234094,9 @@
       "C": 6,
       "D": 6
     },
-    "destination": "BERGEN",
+    "destination": "HUSNES",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:34:17.499269+00:00"
+    "last_static_update": "2026-10-12T04:21:51.106283+00:00"
   },
   {
     "mmsi": "232042546",
@@ -235439,7 +235439,7 @@
     },
     "destination": "DKCPH",
     "max_draught": 2,
-    "last_static_update": "2026-10-11T04:04:19.410551+00:00"
+    "last_static_update": "2026-10-12T04:22:22.669494+00:00"
   },
   {
     "mmsi": "228489600",
@@ -235660,7 +235660,7 @@
     },
     "destination": "FECAMP-OWF-FECAMP",
     "max_draught": 1.8,
-    "last_static_update": "2026-10-11T04:36:18.309159+00:00"
+    "last_static_update": "2026-10-12T04:22:23.178923+00:00"
   },
   {
     "mmsi": "231894000",
@@ -237426,7 +237426,7 @@
     },
     "destination": "TROMSO",
     "max_draught": 3.2,
-    "last_static_update": "2026-10-11T04:40:18.322538+00:00",
+    "last_static_update": "2026-10-12T04:22:27.307792+00:00",
     "estimated_dwt": 16128
   },
   {
@@ -241269,7 +241269,7 @@
     },
     "destination": "PAPENDRECHT  KOOYHAV",
     "max_draught": 1.4,
-    "last_static_update": "2026-10-11T12:08:20.360656+00:00"
+    "last_static_update": "2026-10-12T04:22:00.374098+00:00"
   },
   {
     "mmsi": "244740404",
@@ -244176,7 +244176,7 @@
     },
     "destination": "Unknown",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:32:04.563312+00:00"
+    "last_static_update": "2026-10-12T04:22:18.798293+00:00"
   },
   {
     "mmsi": "368926087",
@@ -244879,7 +244879,7 @@
     },
     "destination": "HAMBURG-",
     "max_draught": 1.2,
-    "last_static_update": "2026-10-11T12:07:53.650129+00:00"
+    "last_static_update": "2026-10-12T04:21:53.841008+00:00"
   },
   {
     "mmsi": "244700788",
@@ -245898,7 +245898,7 @@
     },
     "destination": "DEBRV",
     "max_draught": 1.4,
-    "last_static_update": "2026-10-11T04:19:35.399337+00:00",
+    "last_static_update": "2026-10-12T04:22:11.323203+00:00",
     "estimated_dwt": 10000
   },
   {
@@ -248228,7 +248228,7 @@
     },
     "destination": "AMSTERDAM",
     "max_draught": 1,
-    "last_static_update": "2026-10-11T04:14:32.318225+00:00"
+    "last_static_update": "2026-10-12T04:22:01.929143+00:00"
   },
   {
     "mmsi": "235074573",
@@ -252512,7 +252512,7 @@
     },
     "destination": "ROUEN",
     "max_draught": 5.5,
-    "last_static_update": "2026-10-11T04:40:19.542561+00:00"
+    "last_static_update": "2026-10-12T04:22:24.481515+00:00"
   },
   {
     "mmsi": "245265000",
@@ -254982,7 +254982,7 @@
     },
     "destination": "WAALWIJKEUROPOORT",
     "max_draught": 0.2,
-    "last_static_update": "2026-10-11T04:39:45.219091+00:00",
+    "last_static_update": "2026-10-12T04:22:01.078915+00:00",
     "estimated_dwt": 10000
   },
   {
@@ -255204,7 +255204,7 @@
     },
     "destination": "FOR ORDER",
     "max_draught": 3.5,
-    "last_static_update": "2026-10-11T04:21:09.653456+00:00"
+    "last_static_update": "2026-10-12T04:21:55.788392+00:00"
   },
   {
     "mmsi": "244130065",
@@ -257992,7 +257992,7 @@
     },
     "destination": "MCKINNEY FLEET BATON",
     "max_draught": 3.1,
-    "last_static_update": "2026-10-11T04:22:05.166708+00:00"
+    "last_static_update": "2026-10-12T04:22:21.388542+00:00"
   },
   {
     "mmsi": "219027328",
@@ -262869,7 +262869,7 @@
     },
     "destination": "USCHI<>USCHI",
     "max_draught": 1.9,
-    "last_static_update": "2026-10-11T04:15:58.134139+00:00"
+    "last_static_update": "2026-10-12T04:22:17.610836+00:00"
   },
   {
     "mmsi": "311001548",
@@ -263445,9 +263445,9 @@
       "C": 13,
       "D": 14
     },
-    "destination": "GBGRK",
-    "max_draught": 7.7,
-    "last_static_update": "2026-10-09T04:36:43.854741+00:00"
+    "destination": "FRLEH",
+    "max_draught": 7.9,
+    "last_static_update": "2026-10-12T04:22:17.610650+00:00"
   },
   {
     "mmsi": "228370600",
@@ -264126,7 +264126,7 @@
     },
     "destination": "SEATTLE",
     "max_draught": 6,
-    "last_static_update": "2026-10-10T21:18:41.355417+00:00",
+    "last_static_update": "2026-10-12T04:21:50.841633+00:00",
     "estimated_dwt": 10000
   },
   {
@@ -264399,7 +264399,7 @@
     },
     "destination": "SURWEY ELBE/GB",
     "max_draught": 1.9,
-    "last_static_update": "2026-10-11T04:39:54.707159+00:00"
+    "last_static_update": "2026-10-12T04:21:56.922422+00:00"
   },
   {
     "mmsi": "305573000",
@@ -265161,9 +265161,9 @@
       "C": 21,
       "D": 21
     },
-    "destination": "USSAV",
-    "max_draught": 11.3,
-    "last_static_update": "2026-10-11T04:29:47.265034+00:00",
+    "destination": "USORF",
+    "max_draught": 11,
+    "last_static_update": "2026-10-12T04:21:49.671037+00:00",
     "estimated_dwt": 145605
   },
   {
@@ -265793,7 +265793,7 @@
     },
     "destination": "DELFZYL",
     "max_draught": 5.9,
-    "last_static_update": "2026-10-11T04:27:55.263211+00:00"
+    "last_static_update": "2026-10-12T04:22:12.269606+00:00"
   },
   {
     "mmsi": "645372000",
@@ -267446,7 +267446,7 @@
     },
     "destination": "SCHELLINGW",
     "max_draught": 1.2,
-    "last_static_update": "2026-10-11T04:34:06.094808+00:00",
+    "last_static_update": "2026-10-12T04:22:14.668590+00:00",
     "estimated_dwt": 10000
   },
   {
@@ -270105,7 +270105,7 @@
     },
     "destination": "AUBNE",
     "max_draught": 6,
-    "last_static_update": "2026-10-11T04:25:53.752143+00:00"
+    "last_static_update": "2026-10-12T04:22:09.239789+00:00"
   },
   {
     "mmsi": "235105485",
@@ -270513,7 +270513,7 @@
     },
     "destination": "ANCIENNE CLUSE DE TA",
     "max_draught": 0.4,
-    "last_static_update": "2026-10-11T04:38:43.535294+00:00"
+    "last_static_update": "2026-10-12T04:22:19.167411+00:00"
   },
   {
     "mmsi": "257803000",
@@ -270751,7 +270751,7 @@
     },
     "destination": "B@@@@@@@@B@@ @@HB@@P",
     "max_draught": 6.4,
-    "last_static_update": "2026-10-11T04:33:09.738763+00:00"
+    "last_static_update": "2026-10-12T04:22:15.193373+00:00"
   },
   {
     "mmsi": "538071772",
@@ -272553,7 +272553,7 @@
     },
     "destination": "ROTTERDAM",
     "max_draught": 3.7,
-    "last_static_update": "2026-10-11T21:28:51.309084+00:00"
+    "last_static_update": "2026-10-12T04:22:19.678195+00:00"
   },
   {
     "mmsi": "565459000",
@@ -273080,7 +273080,7 @@
     },
     "destination": "HARBOUR OPS",
     "max_draught": 6.7,
-    "last_static_update": "2026-10-11T04:34:55.356643+00:00"
+    "last_static_update": "2026-10-12T04:21:53.072005+00:00"
   },
   {
     "mmsi": "367001550",
@@ -275290,7 +275290,7 @@
     },
     "destination": "NA",
     "max_draught": 9.7,
-    "last_static_update": "2026-10-11T04:32:01.194997+00:00"
+    "last_static_update": "2026-10-12T04:21:54.003766+00:00"
   },
   {
     "mmsi": "244750151",
@@ -276860,7 +276860,7 @@
     },
     "destination": "FLL",
     "max_draught": 2.1,
-    "last_static_update": "2026-10-11T04:40:20.557285+00:00"
+    "last_static_update": "2026-10-12T04:22:26.386100+00:00"
   },
   {
     "mmsi": "244710797",
@@ -278475,7 +278475,7 @@
     },
     "destination": "@@@@@BDAM",
     "max_draught": 2.5,
-    "last_static_update": "2026-10-11T12:07:52.465311+00:00"
+    "last_static_update": "2026-10-12T04:21:57.838110+00:00"
   },
   {
     "mmsi": "232045671",
@@ -278832,7 +278832,7 @@
     },
     "destination": "ANACORTES",
     "max_draught": 2.2,
-    "last_static_update": "2026-10-11T04:39:54.707985+00:00"
+    "last_static_update": "2026-10-12T04:21:57.838803+00:00"
   },
   {
     "mmsi": "316053863",
@@ -279886,7 +279886,7 @@
     },
     "destination": "ABERDEEN",
     "max_draught": 4.4,
-    "last_static_update": "2026-10-11T04:32:12.778547+00:00"
+    "last_static_update": "2026-10-12T04:21:54.037225+00:00"
   },
   {
     "mmsi": "257020890",
@@ -286822,7 +286822,7 @@
     },
     "destination": "WOODFIBRE",
     "max_draught": null,
-    "last_static_update": "2026-10-08T12:49:41.480829+00:00"
+    "last_static_update": "2026-10-12T04:21:58.425972+00:00"
   },
   {
     "mmsi": "428003005",
@@ -286856,7 +286856,7 @@
     },
     "destination": "DEBRE",
     "max_draught": 10,
-    "last_static_update": "2026-10-11T04:34:14.377058+00:00"
+    "last_static_update": "2026-10-12T04:22:22.179446+00:00"
   },
   {
     "mmsi": "244058266",
@@ -288097,7 +288097,7 @@
     },
     "destination": "Unknown",
     "max_draught": 1.4,
-    "last_static_update": "2026-10-11T04:10:04.371746+00:00"
+    "last_static_update": "2026-10-12T04:22:26.384524+00:00"
   },
   {
     "mmsi": "273353740",
@@ -294869,7 +294869,7 @@
     },
     "destination": "NL VLI",
     "max_draught": 5.4,
-    "last_static_update": "2026-10-10T21:20:04.863227+00:00"
+    "last_static_update": "2026-10-12T04:22:12.849387+00:00"
   },
   {
     "mmsi": "255805390",
@@ -295753,7 +295753,7 @@
     },
     "destination": "ARNHEM",
     "max_draught": 1.2,
-    "last_static_update": "2026-10-11T04:09:08.749737+00:00"
+    "last_static_update": "2026-10-12T04:21:51.843396+00:00"
   },
   {
     "mmsi": "636012767",
@@ -296059,7 +296059,7 @@
     },
     "destination": "@@@@@@@@@@@@@@@@BHP",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:39:43.065836+00:00"
+    "last_static_update": "2026-10-12T04:22:07.939933+00:00"
   },
   {
     "mmsi": "261006653",
@@ -296705,7 +296705,7 @@
     },
     "destination": "ROTTERDAM",
     "max_draught": 0.1,
-    "last_static_update": "2026-10-11T04:22:18.659645+00:00"
+    "last_static_update": "2026-10-12T04:22:26.385342+00:00"
   },
   {
     "mmsi": "246354000",
@@ -297232,7 +297232,7 @@
     },
     "destination": "SCHEEPVAARTBEGELEID",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:22:05.616483+00:00"
+    "last_static_update": "2026-10-12T04:22:22.671779+00:00"
   },
   {
     "mmsi": "211436810",
@@ -298864,7 +298864,7 @@
     },
     "destination": "AMSTERDAM",
     "max_draught": 0.1,
-    "last_static_update": "2026-10-11T04:27:58.075146+00:00"
+    "last_static_update": "2026-10-12T04:22:14.668803+00:00"
   },
   {
     "mmsi": "227032550",
@@ -299187,7 +299187,7 @@
     },
     "destination": "NOFRK",
     "max_draught": 4.7,
-    "last_static_update": "2026-10-10T04:21:56.446006+00:00"
+    "last_static_update": "2026-10-12T04:22:03.260007+00:00"
   },
   {
     "mmsi": "563009700",
@@ -300054,7 +300054,7 @@
     },
     "destination": "GR PIR",
     "max_draught": 3.2,
-    "last_static_update": "2026-10-11T04:32:15.404079+00:00"
+    "last_static_update": "2026-10-12T04:22:23.179056+00:00"
   },
   {
     "mmsi": "244076547",
@@ -300360,7 +300360,7 @@
     },
     "destination": "DEBRV",
     "max_draught": 4.2,
-    "last_static_update": "2026-10-11T04:38:16.040036+00:00"
+    "last_static_update": "2026-10-12T04:22:27.306680+00:00"
   },
   {
     "mmsi": "258610000",
@@ -303352,7 +303352,7 @@
     },
     "destination": "Unknown",
     "max_draught": 1.6,
-    "last_static_update": "2026-10-11T04:40:16.612843+00:00"
+    "last_static_update": "2026-10-12T04:22:19.166908+00:00"
   },
   {
     "mmsi": "710006712",
@@ -308304,7 +308304,7 @@
     },
     "destination": "GRONINGEN",
     "max_draught": 1.3,
-    "last_static_update": "2026-10-11T04:27:53.256226+00:00"
+    "last_static_update": "2026-10-12T04:22:11.794000+00:00"
   },
   {
     "mmsi": "211207710",
@@ -311532,9 +311532,9 @@
       "C": 13,
       "D": 9
     },
-    "destination": "PT SET",
-    "max_draught": 6.9,
-    "last_static_update": "2026-10-03T20:36:16.129670+00:00"
+    "destination": "FR LEH",
+    "max_draught": 6.2,
+    "last_static_update": "2026-10-12T04:21:59.376359+00:00"
   },
   {
     "mmsi": "244010081",
@@ -312569,9 +312569,9 @@
       "C": 20,
       "D": 4
     },
-    "destination": "US^0NJV>0NJX",
+    "destination": "US^0Y8G>0QAW",
     "max_draught": 3.6,
-    "last_static_update": "2026-10-06T13:06:00.879284+00:00"
+    "last_static_update": "2026-10-12T04:21:53.245458+00:00"
   },
   {
     "mmsi": "211784260",
@@ -313420,7 +313420,7 @@
     },
     "destination": "Unknown",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:39:58.265039+00:00"
+    "last_static_update": "2026-10-12T04:21:50.842334+00:00"
   },
   {
     "mmsi": "636093060",
@@ -317147,9 +317147,9 @@
       "C": 15,
       "D": 19
     },
-    "destination": "BEANR",
-    "max_draught": 10.8,
-    "last_static_update": "2026-10-06T13:09:48.553957+00:00"
+    "destination": "LTKLJ",
+    "max_draught": 7.2,
+    "last_static_update": "2026-10-12T04:21:57.838927+00:00"
   },
   {
     "mmsi": "636024985",
@@ -317965,7 +317965,7 @@
     },
     "destination": "KARLSRUHE",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:40:58.548298+00:00"
+    "last_static_update": "2026-10-12T04:22:15.192878+00:00"
   },
   {
     "mmsi": "205313000",
@@ -320520,7 +320520,7 @@
     },
     "destination": "MC MON",
     "max_draught": 2.7,
-    "last_static_update": "2026-10-11T04:21:57.640724+00:00"
+    "last_static_update": "2026-10-12T04:22:15.671607+00:00"
   },
   {
     "mmsi": "636021296",
@@ -323053,7 +323053,7 @@
     },
     "destination": "BREMEN",
     "max_draught": 2.4,
-    "last_static_update": "2026-10-10T12:04:02.370996+00:00"
+    "last_static_update": "2026-10-12T04:21:53.072609+00:00"
   },
   {
     "mmsi": "503541000",
@@ -323274,7 +323274,7 @@
     },
     "destination": "AMSTERDAM AFRIKAHAVE",
     "max_draught": 1.5,
-    "last_static_update": "2026-10-11T04:27:59.210612+00:00"
+    "last_static_update": "2026-10-12T04:22:17.611090+00:00"
   },
   {
     "mmsi": "226008880",
@@ -323869,7 +323869,7 @@
     },
     "destination": "SG SIN AWW",
     "max_draught": 6.9,
-    "last_static_update": "2026-10-10T21:15:54.756403+00:00"
+    "last_static_update": "2026-10-12T04:21:54.004248+00:00"
   },
   {
     "mmsi": "244650881",
@@ -324192,7 +324192,7 @@
     },
     "destination": "GLUCKSTADT",
     "max_draught": 1.8,
-    "last_static_update": "2026-10-11T12:08:09.603740+00:00"
+    "last_static_update": "2026-10-12T04:22:09.728432+00:00"
   },
   {
     "mmsi": "601011260",
@@ -327851,7 +327851,7 @@
     },
     "destination": "KAMPEN",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:37:52.108976+00:00",
+    "last_static_update": "2026-10-12T04:22:22.181569+00:00",
     "estimated_dwt": 10000
   },
   {
@@ -330298,9 +330298,9 @@
       "C": 6,
       "D": 6
     },
-    "destination": "MUTTENZ",
+    "destination": "HUNINGUE",
     "max_draught": 2,
-    "last_static_update": "2026-07-28T03:26:55.796432+00:00"
+    "last_static_update": "2026-10-12T04:21:58.742440+00:00"
   },
   {
     "mmsi": "512150000",
@@ -331677,7 +331677,7 @@
     },
     "destination": "BRUGGE",
     "max_draught": 1,
-    "last_static_update": "2026-10-11T04:27:00.777715+00:00"
+    "last_static_update": "2026-10-12T04:22:12.268369+00:00"
   },
   {
     "mmsi": "265500640",
@@ -332346,7 +332346,7 @@
     },
     "destination": "ABERDEEN",
     "max_draught": 4.2,
-    "last_static_update": "2026-09-29T22:00:27.474488+00:00"
+    "last_static_update": "2026-10-12T04:22:15.191098+00:00"
   },
   {
     "mmsi": "205556190",
@@ -336016,9 +336016,9 @@
       "C": 12,
       "D": 4
     },
-    "destination": "SE LLA  VIA NOK",
-    "max_draught": 6.5,
-    "last_static_update": "2026-10-11T04:19:50.642173+00:00"
+    "destination": "SE IGG",
+    "max_draught": 4.6,
+    "last_static_update": "2026-10-12T04:22:17.237223+00:00"
   },
   {
     "mmsi": "261159000",
@@ -338365,7 +338365,7 @@
     },
     "destination": "KILLINGOY",
     "max_draught": 5,
-    "last_static_update": "2026-10-11T04:33:53.245818+00:00"
+    "last_static_update": "2026-10-12T04:22:23.179449+00:00"
   },
   {
     "mmsi": "417222439",
@@ -339385,7 +339385,7 @@
     },
     "destination": "A CORUNA",
     "max_draught": 5.2,
-    "last_static_update": "2026-10-11T04:37:51.336168+00:00"
+    "last_static_update": "2026-10-12T04:22:27.309683+00:00"
   },
   {
     "mmsi": "338165341",
@@ -344774,7 +344774,7 @@
     },
     "destination": "CALANDKANAAL ETT MID",
     "max_draught": 3.5,
-    "last_static_update": "2026-10-10T21:25:10.733429+00:00"
+    "last_static_update": "2026-10-12T04:22:18.800657+00:00"
   },
   {
     "mmsi": "244804936",
@@ -349767,7 +349767,7 @@
     },
     "destination": "EEMSHAVEN",
     "max_draught": 3.2,
-    "last_static_update": "2026-10-11T04:27:58.800342+00:00"
+    "last_static_update": "2026-10-12T04:22:17.946918+00:00"
   },
   {
     "mmsi": "244730740",
@@ -353406,7 +353406,7 @@
     },
     "destination": "FISHFARMS",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:34:05.698324+00:00"
+    "last_static_update": "2026-10-12T04:22:16.782460+00:00"
   },
   {
     "mmsi": "235093015",
@@ -355378,7 +355378,7 @@
     },
     "destination": "DRACHTEN",
     "max_draught": 2,
-    "last_static_update": "2026-10-11T04:40:01.891839+00:00"
+    "last_static_update": "2026-10-12T04:22:04.078138+00:00"
   },
   {
     "mmsi": "248054000",
@@ -357016,7 +357016,7 @@
     },
     "destination": "BERGEN",
     "max_draught": 4,
-    "last_static_update": "2026-10-11T04:27:57.472660+00:00"
+    "last_static_update": "2026-10-12T04:22:12.851119+00:00"
   },
   {
     "mmsi": "538008897",
@@ -357285,9 +357285,9 @@
       "C": 11,
       "D": 4
     },
-    "destination": ">JP FNB OFF",
+    "destination": ">JP ANE OFF",
     "max_draught": 5.4,
-    "last_static_update": "2026-10-06T13:02:36.230284+00:00"
+    "last_static_update": "2026-10-12T04:22:22.672267+00:00"
   },
   {
     "mmsi": "205459900",
@@ -363453,7 +363453,7 @@
     },
     "destination": "MIAMI",
     "max_draught": 2.3,
-    "last_static_update": "2026-10-10T04:21:34.932389+00:00"
+    "last_static_update": "2026-10-12T04:22:01.078822+00:00"
   },
   {
     "mmsi": "319436000",
@@ -364780,7 +364780,7 @@
     },
     "destination": "BELFAST",
     "max_draught": 5.2,
-    "last_static_update": "2026-10-11T04:39:48.771902+00:00"
+    "last_static_update": "2026-10-12T04:22:03.258883+00:00"
   },
   {
     "mmsi": "244700859",
@@ -365409,7 +365409,7 @@
     },
     "destination": "Unknown",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:27:52.860977+00:00"
+    "last_static_update": "2026-10-12T04:21:55.788948+00:00"
   },
   {
     "mmsi": "244660038",
@@ -366854,7 +366854,7 @@
     },
     "destination": "OFF SCHONHAGEN",
     "max_draught": 5.5,
-    "last_static_update": "2026-10-11T04:41:00.481400+00:00"
+    "last_static_update": "2026-10-12T04:22:19.168936+00:00"
   },
   {
     "mmsi": "211540670",
@@ -375315,7 +375315,7 @@
     },
     "destination": "Unknown",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:39:08.599790+00:00"
+    "last_static_update": "2026-10-12T04:22:08.460041+00:00"
   },
   {
     "mmsi": "667001982",
@@ -378297,7 +378297,7 @@
     },
     "destination": "Unknown",
     "max_draught": null,
-    "last_static_update": "2026-10-06T12:49:41.398425+00:00"
+    "last_static_update": "2026-10-12T04:22:22.670700+00:00"
   },
   {
     "mmsi": "636015380",
@@ -386260,7 +386260,7 @@
     },
     "destination": "ANTIBES",
     "max_draught": 2.8,
-    "last_static_update": "2026-10-11T04:16:07.997131+00:00"
+    "last_static_update": "2026-10-12T04:22:25.384017+00:00"
   },
   {
     "mmsi": "431023117",
@@ -388323,7 +388323,7 @@
     },
     "destination": "DERSK",
     "max_draught": 5.9,
-    "last_static_update": "2026-10-11T04:28:05.825842+00:00"
+    "last_static_update": "2026-10-12T04:22:28.172741+00:00"
   },
   {
     "mmsi": "366834640",
@@ -390312,7 +390312,7 @@
     },
     "destination": "ANTWERPEN BOSVCS COM",
     "max_draught": 3.4,
-    "last_static_update": "2026-10-11T04:29:40.964037+00:00"
+    "last_static_update": "2026-10-12T04:21:56.366916+00:00"
   },
   {
     "mmsi": "636024758",
@@ -393452,7 +393452,7 @@
     },
     "destination": "ROTTERDAM",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:39:48.155692+00:00"
+    "last_static_update": "2026-10-12T04:21:49.300210+00:00"
   },
   {
     "mmsi": "366978690",
@@ -410789,9 +410789,9 @@
       "C": 8,
       "D": 8
     },
-    "destination": "DK NBG > NL RTM VIA",
+    "destination": "NL RTM>FR PJG",
     "max_draught": 6.3,
-    "last_static_update": "2026-10-09T04:43:37.373382+00:00"
+    "last_static_update": "2026-10-12T04:21:58.741772+00:00"
   },
   {
     "mmsi": "368110050",
@@ -411624,7 +411624,7 @@
     },
     "destination": "OUDE MAAS",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:28:02.042354+00:00"
+    "last_static_update": "2026-10-12T04:22:23.177408+00:00"
   },
   {
     "mmsi": "224631000",
@@ -411691,7 +411691,7 @@
     },
     "destination": "SALERNE",
     "max_draught": 2.2,
-    "last_static_update": "2026-10-11T12:07:50.944568+00:00",
+    "last_static_update": "2026-10-12T04:22:20.656402+00:00",
     "estimated_dwt": 10000
   },
   {
@@ -414654,9 +414654,9 @@
       "C": 8,
       "D": 8
     },
-    "destination": "BEANR",
-    "max_draught": 5.1,
-    "last_static_update": "2026-10-11T04:27:47.572684+00:00"
+    "destination": "ESCAS",
+    "max_draught": 6.8,
+    "last_static_update": "2026-10-12T04:21:50.841944+00:00"
   },
   {
     "mmsi": "267131009",
@@ -415370,7 +415370,7 @@
     },
     "destination": "IT GOA",
     "max_draught": 10.2,
-    "last_static_update": "2026-10-11T04:32:15.252505+00:00"
+    "last_static_update": "2026-10-12T04:21:54.304691+00:00"
   },
   {
     "mmsi": "563075140",
@@ -423151,7 +423151,7 @@
     },
     "destination": "Unknown",
     "max_draught": 3.6,
-    "last_static_update": "2026-10-07T12:51:36.779118+00:00"
+    "last_static_update": "2026-10-12T04:22:09.728696+00:00"
   },
   {
     "mmsi": "219554000",
@@ -428889,9 +428889,9 @@
       "C": 44,
       "D": 17
     },
-    "destination": "BEZEE>SGSIN PWBGA",
-    "max_draught": 14,
-    "last_static_update": "2026-08-23T13:25:05.562807+00:00"
+    "destination": "CNYTN>SGSIN",
+    "max_draught": 15.5,
+    "last_static_update": "2026-10-12T04:22:03.954978+00:00"
   },
   {
     "mmsi": "244830809",
@@ -430019,7 +430019,7 @@
     },
     "destination": "VLISSINGEN",
     "max_draught": 1.5,
-    "last_static_update": "2026-10-11T04:40:07.013028+00:00"
+    "last_static_update": "2026-10-12T04:22:12.269915+00:00"
   },
   {
     "mmsi": "431005016",
@@ -433658,7 +433658,7 @@
     },
     "destination": "AUCKLAND",
     "max_draught": 4.7,
-    "last_static_update": "2026-10-11T04:21:40.259134+00:00"
+    "last_static_update": "2026-10-12T04:21:52.248087+00:00"
   },
   {
     "mmsi": "353812000",
@@ -438134,7 +438134,7 @@
     },
     "destination": "HONGKONG",
     "max_draught": 4.8,
-    "last_static_update": "2026-10-08T22:58:11.620138+00:00"
+    "last_static_update": "2026-10-12T04:22:25.383423+00:00"
   },
   {
     "mmsi": "311000274",
@@ -447293,7 +447293,7 @@
     },
     "destination": "NEWPORT RI",
     "max_draught": 4.2,
-    "last_static_update": "2026-09-30T11:59:49.632587+00:00"
+    "last_static_update": "2026-10-12T04:21:50.129247+00:00"
   },
   {
     "mmsi": "538010239",
@@ -451198,7 +451198,7 @@
     },
     "destination": "ZEIL AM MAIN",
     "max_draught": 2.3,
-    "last_static_update": "2026-10-11T04:34:14.720645+00:00"
+    "last_static_update": "2026-10-12T04:22:27.306843+00:00"
   },
   {
     "mmsi": "247280800",
@@ -452184,7 +452184,7 @@
     },
     "destination": "NIJMEGEN",
     "max_draught": 1.7,
-    "last_static_update": "2026-10-11T04:27:17.010184+00:00"
+    "last_static_update": "2026-10-12T04:22:06.748520+00:00"
   },
   {
     "mmsi": "538004893",
@@ -452252,7 +452252,7 @@
     },
     "destination": "Unknown",
     "max_draught": 2.3,
-    "last_static_update": "2026-09-29T12:10:11.047587+00:00"
+    "last_static_update": "2026-10-12T04:22:15.192264+00:00"
   },
   {
     "mmsi": "249108000",
@@ -453136,7 +453136,7 @@
     },
     "destination": "Unknown",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:22:00.838084+00:00"
+    "last_static_update": "2026-10-12T04:22:19.678677+00:00"
   },
   {
     "mmsi": "211541590",
@@ -465675,7 +465675,7 @@
     },
     "destination": "Unknown",
     "max_draught": null,
-    "last_static_update": "2026-10-08T04:32:42.774558+00:00"
+    "last_static_update": "2026-10-12T04:22:19.680010+00:00"
   },
   {
     "mmsi": "311035300",
@@ -468917,7 +468917,7 @@
     },
     "destination": "KAUNAKAKAI",
     "max_draught": 3.9,
-    "last_static_update": "2026-10-11T04:09:53.236407+00:00"
+    "last_static_update": "2026-10-12T04:22:09.241676+00:00"
   },
   {
     "mmsi": "538008582",
@@ -475491,7 +475491,7 @@
     },
     "destination": "ANTWERPEN 6E HAVENDO",
     "max_draught": 2,
-    "last_static_update": "2026-10-11T04:37:27.319071+00:00"
+    "last_static_update": "2026-10-12T04:22:27.309364+00:00"
   },
   {
     "mmsi": "369494759",
@@ -482868,7 +482868,7 @@
     },
     "destination": "AU MEL",
     "max_draught": 7,
-    "last_static_update": "2026-10-11T04:39:55.044846+00:00"
+    "last_static_update": "2026-10-12T04:21:57.177219+00:00"
   },
   {
     "mmsi": "244110268",
@@ -483055,7 +483055,7 @@
     },
     "destination": "TARANTO",
     "max_draught": 3,
-    "last_static_update": "2026-10-11T04:34:10.620195+00:00"
+    "last_static_update": "2026-10-12T04:22:17.238582+00:00"
   },
   {
     "mmsi": "238836740",
@@ -483667,7 +483667,7 @@
     },
     "destination": "LUMMERLAND",
     "max_draught": 1.2,
-    "last_static_update": "2026-08-01T03:55:49.989872+00:00"
+    "last_static_update": "2026-10-12T04:22:21.387926+00:00"
   },
   {
     "mmsi": "567061800",
@@ -484540,7 +484540,7 @@
     },
     "destination": "GRPER",
     "max_draught": 2.4,
-    "last_static_update": "2026-10-11T04:39:57.087407+00:00"
+    "last_static_update": "2026-10-12T04:22:01.078439+00:00"
   },
   {
     "mmsi": "225566666",
@@ -488747,7 +488747,7 @@
     },
     "destination": "Unknown",
     "max_draught": 11,
-    "last_static_update": "2026-10-11T04:18:08.856081+00:00"
+    "last_static_update": "2026-10-12T04:22:12.270686+00:00"
   },
   {
     "mmsi": "225464000",
@@ -488918,7 +488918,7 @@
     },
     "destination": "ERDOEL RAFF EMSLAND",
     "max_draught": 2.3,
-    "last_static_update": "2026-10-11T04:39:49.141573+00:00"
+    "last_static_update": "2026-10-12T04:22:00.373806+00:00"
   },
   {
     "mmsi": "304036000",
@@ -494920,7 +494920,7 @@
     },
     "destination": "Unknown",
     "max_draught": 1,
-    "last_static_update": "2026-10-11T12:07:41.541543+00:00"
+    "last_static_update": "2026-10-12T04:21:56.921616+00:00"
   },
   {
     "mmsi": "512004408",
@@ -495090,7 +495090,7 @@
     },
     "destination": "Unknown",
     "max_draught": null,
-    "last_static_update": "2026-10-09T04:42:27.602476+00:00"
+    "last_static_update": "2026-10-12T04:21:57.564920+00:00"
   },
   {
     "mmsi": "367311840",
@@ -499091,7 +499091,7 @@
     },
     "destination": "HANKO",
     "max_draught": 2,
-    "last_static_update": "2026-10-11T04:31:28.243422+00:00"
+    "last_static_update": "2026-10-12T04:21:50.728378+00:00"
   },
   {
     "mmsi": "237247600",
@@ -501554,9 +501554,9 @@
       "C": 0,
       "D": 11
     },
-    "destination": "ROTTERDAM WAALHAVEN",
+    "destination": "REISHOLZ",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:28:06.982135+00:00"
+    "last_static_update": "2026-10-12T04:22:25.381350+00:00"
   },
   {
     "mmsi": "413247850",
@@ -509273,7 +509273,7 @@
     },
     "destination": "STRATEGIC FLT",
     "max_draught": 2.9,
-    "last_static_update": "2026-10-11T04:21:51.816237+00:00"
+    "last_static_update": "2026-10-12T04:22:07.941520+00:00"
   },
   {
     "mmsi": "368280050",
@@ -511489,7 +511489,7 @@
     },
     "destination": "CORPUS",
     "max_draught": 3.1,
-    "last_static_update": "2026-10-11T04:34:12.874485+00:00"
+    "last_static_update": "2026-10-12T04:22:19.167554+00:00"
   },
   {
     "mmsi": "271002572",
@@ -527442,7 +527442,7 @@
     },
     "destination": "TERNEUZEN",
     "max_draught": 1.2,
-    "last_static_update": "2026-10-11T04:40:07.850909+00:00"
+    "last_static_update": "2026-10-12T04:22:12.849243+00:00"
   },
   {
     "mmsi": "636024193",
@@ -531457,7 +531457,7 @@
     },
     "destination": "ES BCN",
     "max_draught": 3,
-    "last_static_update": "2026-10-11T04:33:51.335497+00:00"
+    "last_static_update": "2026-10-12T04:21:51.105368+00:00"
   },
   {
     "mmsi": "368872000",
@@ -533836,7 +533836,7 @@
     },
     "destination": "YSSELMEER",
     "max_draught": 1.4,
-    "last_static_update": "2026-10-11T04:21:51.815505+00:00"
+    "last_static_update": "2026-10-12T04:22:09.240214+00:00"
   },
   {
     "mmsi": "244010705",
@@ -534516,7 +534516,7 @@
     },
     "destination": "GRANGEMOUTH",
     "max_draught": 5.3,
-    "last_static_update": "2026-10-11T04:27:07.191456+00:00"
+    "last_static_update": "2026-10-12T04:22:21.386823+00:00"
   },
   {
     "mmsi": "245091000",
@@ -540583,9 +540583,9 @@
       "C": 6,
       "D": 5
     },
-    "destination": "VLISSINGEN BIJLEVELD",
+    "destination": "MOERDIJK  ATM",
     "max_draught": 0.3,
-    "last_static_update": "2026-10-10T17:11:33.762353+00:00"
+    "last_static_update": "2026-10-12T04:21:54.899781+00:00"
   },
   {
     "mmsi": "613744000",
@@ -542391,7 +542391,7 @@
     },
     "destination": "USPEV",
     "max_draught": 2.2,
-    "last_static_update": "2026-10-11T04:39:54.123012+00:00"
+    "last_static_update": "2026-10-12T04:21:53.072455+00:00"
   },
   {
     "mmsi": "538011369",
@@ -569081,7 +569081,7 @@
     },
     "destination": "@B   @)0",
     "max_draught": 1,
-    "last_static_update": "2026-10-11T04:40:12.372702+00:00"
+    "last_static_update": "2026-10-12T04:22:14.668930+00:00"
   },
   {
     "mmsi": "601159800",
@@ -569317,9 +569317,9 @@
       "C": 7,
       "D": 9
     },
-    "destination": "ILASH",
-    "max_draught": 3.6,
-    "last_static_update": "2026-10-11T04:34:05.335502+00:00"
+    "destination": "GRVOL",
+    "max_draught": 4.6,
+    "last_static_update": "2026-10-12T04:22:03.257747+00:00"
   },
   {
     "mmsi": "431011759",
@@ -573111,7 +573111,7 @@
     },
     "destination": "HAMBURG",
     "max_draught": 0.4,
-    "last_static_update": "2026-10-11T04:16:02.584861+00:00"
+    "last_static_update": "2026-10-12T04:22:17.239211+00:00"
   },
   {
     "mmsi": "636024110",
@@ -575661,7 +575661,7 @@
     },
     "destination": "Unknown",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:09:09.209050+00:00"
+    "last_static_update": "2026-10-12T04:21:57.838699+00:00"
   },
   {
     "mmsi": "311001620",
@@ -580573,7 +580573,7 @@
     },
     "destination": "KREFELD",
     "max_draught": 1.5,
-    "last_static_update": "2026-10-11T04:22:05.570199+00:00"
+    "last_static_update": "2026-10-12T04:22:27.309885+00:00"
   },
   {
     "mmsi": "244010873",
@@ -582906,7 +582906,7 @@
     },
     "destination": "OUDESCHILD",
     "max_draught": null,
-    "last_static_update": "2026-10-10T21:17:07.005651+00:00"
+    "last_static_update": "2026-10-12T04:22:14.667338+00:00"
   },
   {
     "mmsi": "367610550",
@@ -585351,7 +585351,7 @@
     },
     "destination": "RULED",
     "max_draught": 6.2,
-    "last_static_update": "2026-10-11T04:15:58.827944+00:00"
+    "last_static_update": "2026-10-12T04:22:12.268933+00:00"
   },
   {
     "mmsi": "211216720",
@@ -593069,9 +593069,9 @@
       "C": 23,
       "D": 9
     },
-    "destination": "US POA",
-    "max_draught": 7.8,
-    "last_static_update": "2026-10-08T12:50:06.003998+00:00"
+    "destination": "US PEF",
+    "max_draught": 11.3,
+    "last_static_update": "2026-10-12T04:21:49.966920+00:00"
   },
   {
     "mmsi": "636020839",
@@ -612904,7 +612904,7 @@
     },
     "destination": "ANTWERPEN",
     "max_draught": null,
-    "last_static_update": "2026-10-10T12:01:06.291810+00:00"
+    "last_static_update": "2026-10-12T04:22:06.747276+00:00"
   },
   {
     "mmsi": "244248000",
@@ -618663,7 +618663,7 @@
     },
     "destination": "Unknown",
     "max_draught": 1.5,
-    "last_static_update": "2026-09-03T16:21:07.895576+00:00"
+    "last_static_update": "2026-10-12T04:22:11.792612+00:00"
   },
   {
     "mmsi": "368076250",
@@ -620328,7 +620328,7 @@
     },
     "destination": "US POA",
     "max_draught": 2.6,
-    "last_static_update": "2026-10-11T04:39:52.151362+00:00"
+    "last_static_update": "2026-10-12T04:21:53.245098+00:00"
   },
   {
     "mmsi": "366979080",
@@ -623973,7 +623973,7 @@
     },
     "destination": "BASTIA",
     "max_draught": null,
-    "last_static_update": "2026-10-10T11:57:53.319404+00:00"
+    "last_static_update": "2026-10-12T04:22:17.946325+00:00"
   },
   {
     "mmsi": "667002086",
@@ -624665,7 +624665,7 @@
     },
     "destination": "TT POS",
     "max_draught": 2.6,
-    "last_static_update": "2026-10-09T04:40:03.178488+00:00"
+    "last_static_update": "2026-10-12T04:22:11.794909+00:00"
   },
   {
     "mmsi": "235000795",
@@ -627831,7 +627831,7 @@
     },
     "destination": "MIIDURANNA",
     "max_draught": 4.5,
-    "last_static_update": "2026-10-10T11:57:50.569760+00:00"
+    "last_static_update": "2026-10-12T04:22:04.078342+00:00"
   },
   {
     "mmsi": "247121110",
@@ -633903,7 +633903,7 @@
     },
     "destination": "EXERCISES",
     "max_draught": 6,
-    "last_static_update": "2026-10-11T04:39:55.728242+00:00"
+    "last_static_update": "2026-10-12T04:22:04.077598+00:00"
   },
   {
     "mmsi": "432624000",
@@ -634113,7 +634113,7 @@
     },
     "destination": "HELLEVOETSLUIS",
     "max_draught": 1.4,
-    "last_static_update": "2026-10-11T04:21:58.871474+00:00"
+    "last_static_update": "2026-10-12T04:22:17.948725+00:00"
   },
   {
     "mmsi": "256243000",
@@ -639109,7 +639109,7 @@
     },
     "destination": "PALMA MALLORCA",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:04:00.876784+00:00"
+    "last_static_update": "2026-10-12T04:22:03.955807+00:00"
   },
   {
     "mmsi": "319081100",
@@ -640370,7 +640370,7 @@
     },
     "destination": "NAKNEK AK",
     "max_draught": 2.6,
-    "last_static_update": "2026-10-11T04:33:16.341454+00:00"
+    "last_static_update": "2026-10-12T04:21:51.105102+00:00"
   },
   {
     "mmsi": "431019729",
@@ -640874,7 +640874,7 @@
     },
     "destination": "TONGA",
     "max_draught": 2.5,
-    "last_static_update": "2026-10-09T04:39:58.529832+00:00",
+    "last_static_update": "2026-10-12T04:22:11.793215+00:00",
     "estimated_dwt": 10000
   },
   {
@@ -649334,7 +649334,7 @@
     },
     "destination": "SABINE,TX",
     "max_draught": 7.1,
-    "last_static_update": "2026-10-10T21:10:12.965670+00:00"
+    "last_static_update": "2026-10-12T04:22:17.610395+00:00"
   },
   {
     "mmsi": "235058582",
@@ -669391,18 +669391,18 @@
     "mmsi": "211514430",
     "name": "TANJA DEYMANN I",
     "ship_type": 20,
-    "estimated_dwt": 17424,
+    "estimated_dwt": 17529,
     "call_sign": "DF2635",
     "imo_number": null,
     "dimensions": {
       "A": 153,
-      "B": 12,
+      "B": 13,
       "C": 7,
       "D": 4
     },
     "destination": "HAMBURG",
     "max_draught": 2.8,
-    "last_static_update": "2026-10-11T04:34:12.713152+00:00"
+    "last_static_update": "2026-10-12T04:22:20.654593+00:00"
   },
   {
     "mmsi": "224104240",
@@ -673131,7 +673131,7 @@
     },
     "destination": "HONGKONG",
     "max_draught": 2.8,
-    "last_static_update": "2026-10-11T04:35:59.378024+00:00"
+    "last_static_update": "2026-10-12T04:22:22.180902+00:00"
   },
   {
     "mmsi": "255915723",
@@ -685938,7 +685938,7 @@
     },
     "destination": "JP YOK",
     "max_draught": 3.6,
-    "last_static_update": "2026-10-11T04:34:15.490954+00:00"
+    "last_static_update": "2026-10-12T04:22:27.308706+00:00"
   },
   {
     "mmsi": "431004512",
@@ -692125,7 +692125,7 @@
     },
     "destination": "ZADUR",
     "max_draught": 10.7,
-    "last_static_update": "2026-10-10T17:10:00.629032+00:00"
+    "last_static_update": "2026-10-12T04:22:17.948052+00:00"
   },
   {
     "mmsi": "341311002",
@@ -703736,7 +703736,7 @@
     },
     "destination": "EBJ-HR1-EBJ",
     "max_draught": 1.6,
-    "last_static_update": "2026-10-11T04:39:17.405020+00:00"
+    "last_static_update": "2026-10-12T04:21:56.207887+00:00"
   },
   {
     "mmsi": "211647800",
@@ -705733,7 +705733,7 @@
     },
     "destination": "ESVLC",
     "max_draught": 2.1,
-    "last_static_update": "2026-10-11T21:28:55.266389+00:00"
+    "last_static_update": "2026-10-12T04:21:48.756780+00:00"
   },
   {
     "mmsi": "351354000",
@@ -708738,7 +708738,7 @@
     },
     "destination": "KARLSKRONA",
     "max_draught": 3,
-    "last_static_update": "2026-10-11T04:27:59.814158+00:00"
+    "last_static_update": "2026-10-12T04:22:17.611440+00:00"
   },
   {
     "mmsi": "352005573",
@@ -712625,7 +712625,7 @@
     },
     "destination": "FALMOUTHH",
     "max_draught": 1.5,
-    "last_static_update": "2026-10-11T04:32:22.966309+00:00"
+    "last_static_update": "2026-10-12T04:22:25.381583+00:00"
   },
   {
     "mmsi": "511100759",
@@ -718449,7 +718449,7 @@
     },
     "destination": "BREMERTON PSNS",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:40:20.024430+00:00"
+    "last_static_update": "2026-10-12T04:22:24.049394+00:00"
   },
   {
     "mmsi": "533005400",
@@ -732922,7 +732922,7 @@
     },
     "destination": "TR MER",
     "max_draught": 3,
-    "last_static_update": "2026-10-11T04:33:47.795751+00:00"
+    "last_static_update": "2026-10-12T04:22:26.387023+00:00"
   },
   {
     "mmsi": "232058287",
@@ -749479,7 +749479,7 @@
     },
     "destination": "USPWN",
     "max_draught": 8,
-    "last_static_update": "2026-10-04T11:58:02.320666+00:00"
+    "last_static_update": "2026-10-12T04:22:09.240360+00:00"
   },
   {
     "mmsi": "229403000",
@@ -756755,9 +756755,9 @@
       "C": 17,
       "D": 15
     },
-    "destination": "PC-110 ZAKUM",
+    "destination": "ZAKUM SOUTH RSL",
     "max_draught": 5.2,
-    "last_static_update": "2026-02-24T20:20:47.553372+00:00"
+    "last_static_update": "2026-10-12T04:22:09.728867+00:00"
   },
   {
     "mmsi": "244052402",
@@ -759843,7 +759843,7 @@
     },
     "destination": "@@@@@@",
     "max_draught": null,
-    "last_static_update": "2026-10-07T12:53:25.871682+00:00"
+    "last_static_update": "2026-10-12T04:22:09.727858+00:00"
   },
   {
     "mmsi": "311001006",
@@ -762070,9 +762070,9 @@
       "C": 14,
       "D": 26
     },
-    "destination": "SGSIN-EBGA",
-    "max_draught": 14,
-    "last_static_update": "2026-08-29T20:30:51.154985+00:00"
+    "destination": "CNSHK",
+    "max_draught": 11.4,
+    "last_static_update": "2026-10-12T04:22:15.671334+00:00"
   },
   {
     "mmsi": "224066630",
@@ -772276,9 +772276,9 @@
       "C": 1,
       "D": 15
     },
-    "destination": "JP SEA TRIAL",
+    "destination": "JP CHB OFF",
     "max_draught": 6.8,
-    "last_static_update": "2026-10-10T21:21:55.321253+00:00"
+    "last_static_update": "2026-10-12T04:21:58.919739+00:00"
   },
   {
     "mmsi": "210990000",
@@ -777663,7 +777663,7 @@
     },
     "destination": "BRSUA>BRSSZ",
     "max_draught": 6.8,
-    "last_static_update": "2026-10-11T04:38:37.208027+00:00",
+    "last_static_update": "2026-10-12T04:22:06.378181+00:00",
     "estimated_dwt": 61132
   },
   {
@@ -779218,7 +779218,7 @@
     },
     "destination": "JP FNB OFF",
     "max_draught": 3.5,
-    "last_static_update": "2026-10-11T04:40:13.536574+00:00"
+    "last_static_update": "2026-10-12T04:22:15.673352+00:00"
   },
   {
     "mmsi": "244770418",
@@ -782394,7 +782394,7 @@
     },
     "destination": "0000",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:39:45.334835+00:00"
+    "last_static_update": "2026-10-12T04:21:51.105906+00:00"
   },
   {
     "mmsi": "215378000",
@@ -782884,7 +782884,7 @@
     },
     "destination": "LEEUWARDEN",
     "max_draught": 1.5,
-    "last_static_update": "2026-10-11T04:40:03.542726+00:00"
+    "last_static_update": "2026-10-12T04:22:07.939598+00:00"
   },
   {
     "mmsi": "244660945",
@@ -791259,7 +791259,7 @@
     },
     "destination": "NZ_TRG",
     "max_draught": 10.1,
-    "last_static_update": "2026-10-11T04:34:15.491746+00:00"
+    "last_static_update": "2026-10-12T04:22:25.382738+00:00"
   },
   {
     "mmsi": "371734000",
@@ -827311,9 +827311,9 @@
       "C": 3,
       "D": 9
     },
-    "destination": ">JP CHB S",
-    "max_draught": 4.3,
-    "last_static_update": "2026-10-11T12:07:57.480643+00:00"
+    "destination": ">JP SMZ",
+    "max_draught": 3.5,
+    "last_static_update": "2026-10-12T04:22:12.848146+00:00"
   },
   {
     "mmsi": "219614000",
@@ -832605,9 +832605,9 @@
       "C": 10,
       "D": 26
     },
-    "destination": "NZAKL>AUSYD",
-    "max_draught": 11.3,
-    "last_static_update": "2026-10-11T04:16:08.260263+00:00"
+    "destination": "AUSYD>AUMEL",
+    "max_draught": 10.9,
+    "last_static_update": "2026-10-12T04:22:22.670190+00:00"
   },
   {
     "mmsi": "374438000",
@@ -835826,7 +835826,7 @@
     },
     "destination": "18AI00A",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:40:04.918171+00:00"
+    "last_static_update": "2026-10-12T04:22:07.940342+00:00"
   },
   {
     "mmsi": "269057859",
@@ -839652,7 +839652,7 @@
     },
     "destination": "AMSTERDAM",
     "max_draught": 2.7,
-    "last_static_update": "2026-10-11T04:21:18.671534+00:00"
+    "last_static_update": "2026-10-12T04:21:52.614289+00:00"
   },
   {
     "mmsi": "563172103",
@@ -843748,7 +843748,7 @@
     },
     "destination": "JBPHH",
     "max_draught": 4,
-    "last_static_update": "2026-10-11T04:31:48.175120+00:00",
+    "last_static_update": "2026-10-12T04:21:50.406732+00:00",
     "estimated_dwt": 11475
   },
   {
@@ -847672,7 +847672,7 @@
     },
     "destination": "FRUROVN285DOCKX02514",
     "max_draught": 2.5,
-    "last_static_update": "2026-10-11T04:35:30.041416+00:00"
+    "last_static_update": "2026-10-12T04:21:55.316571+00:00"
   },
   {
     "mmsi": "368164390",
@@ -852746,7 +852746,7 @@
     },
     "destination": "NAUERNA",
     "max_draught": 1.1,
-    "last_static_update": "2026-10-11T04:21:16.540443+00:00"
+    "last_static_update": "2026-10-12T04:21:58.742580+00:00"
   },
   {
     "mmsi": "352004616",
@@ -870875,7 +870875,7 @@
     },
     "destination": "BATAM",
     "max_draught": 3.8,
-    "last_static_update": "2026-09-03T16:01:52.021893+00:00"
+    "last_static_update": "2026-10-12T04:22:11.322496+00:00"
   },
   {
     "mmsi": "211297410",
@@ -872763,7 +872763,7 @@
     },
     "destination": "BE ANR",
     "max_draught": 8.1,
-    "last_static_update": "2026-10-11T04:40:19.416162+00:00"
+    "last_static_update": "2026-10-12T04:22:26.386608+00:00"
   },
   {
     "mmsi": "352005783",
@@ -874434,8 +874434,8 @@
       "D": 6
     },
     "destination": "XIANG GANG",
-    "max_draught": 2,
-    "last_static_update": "2026-10-08T12:51:39.249202+00:00"
+    "max_draught": 1.8,
+    "last_static_update": "2026-10-12T04:22:22.179916+00:00"
   },
   {
     "mmsi": "244830176",
@@ -886139,9 +886139,9 @@
       "C": 11,
       "D": 11
     },
-    "destination": "JAKARTA",
-    "max_draught": 8.2,
-    "last_static_update": "2026-09-09T15:59:54.845168+00:00"
+    "destination": "MAKASSAR",
+    "max_draught": 8.6,
+    "last_static_update": "2026-10-12T04:22:15.191688+00:00"
   },
   {
     "mmsi": "232054186",
@@ -894983,7 +894983,7 @@
     },
     "destination": "Unknown",
     "max_draught": 1.5,
-    "last_static_update": "2026-10-11T04:21:56.624066+00:00"
+    "last_static_update": "2026-10-12T04:22:15.819234+00:00"
   },
   {
     "mmsi": "525003456",
@@ -896689,7 +896689,7 @@
     },
     "destination": "WEB FLEET",
     "max_draught": 2.4,
-    "last_static_update": "2026-10-11T04:40:16.612631+00:00"
+    "last_static_update": "2026-10-12T04:22:21.388676+00:00"
   },
   {
     "mmsi": "241642000",
@@ -905721,9 +905721,9 @@
       "C": 18,
       "D": 14
     },
-    "destination": "MX MZT",
-    "max_draught": 8.9,
-    "last_static_update": "2026-09-02T04:27:57.809997+00:00"
+    "destination": "AU FRE",
+    "max_draught": 9,
+    "last_static_update": "2026-10-12T04:22:15.193493+00:00"
   },
   {
     "mmsi": "366953880",
@@ -907145,8 +907145,8 @@
       "D": 28
     },
     "destination": "AUBNE",
-    "max_draught": 10.1,
-    "last_static_update": "2026-10-11T04:40:01.064196+00:00"
+    "max_draught": 10.2,
+    "last_static_update": "2026-10-12T04:22:03.259404+00:00"
   },
   {
     "mmsi": "247073090",
@@ -926584,7 +926584,7 @@
   {
     "mmsi": "248886000",
     "name": "TRANS FJELL",
-    "ship_type": 82,
+    "ship_type": 80,
     "estimated_dwt": 11088,
     "call_sign": "9HA2563",
     "imo_number": 9329306,
@@ -926594,9 +926594,9 @@
       "C": 7,
       "D": 7
     },
-    "destination": "DKHOR",
-    "max_draught": 6.3,
-    "last_static_update": "2026-10-11T04:33:23.950316+00:00"
+    "destination": "NORAF",
+    "max_draught": 4.3,
+    "last_static_update": "2026-10-12T04:22:26.384641+00:00"
   },
   {
     "mmsi": "244670417",
@@ -937398,7 +937398,7 @@
     },
     "destination": "AUGUSTA",
     "max_draught": 5.2,
-    "last_static_update": "2026-10-11T04:32:00.482804+00:00"
+    "last_static_update": "2026-10-12T04:22:09.242350+00:00"
   },
   {
     "mmsi": "368362260",
@@ -958206,7 +958206,7 @@
     },
     "destination": "USBAY",
     "max_draught": 9.4,
-    "last_static_update": "2026-10-10T21:15:54.883906+00:00"
+    "last_static_update": "2026-10-12T04:21:58.425322+00:00"
   },
   {
     "mmsi": "374515000",
@@ -971062,7 +971062,7 @@
     },
     "destination": "BOMHAVEN",
     "max_draught": 1.7,
-    "last_static_update": "2026-10-11T04:32:24.235726+00:00"
+    "last_static_update": "2026-10-12T04:22:11.324442+00:00"
   },
   {
     "mmsi": "413379170",
@@ -992218,7 +992218,7 @@
     },
     "destination": "USPCV",
     "max_draught": 5.2,
-    "last_static_update": "2026-10-11T04:21:59.498583+00:00"
+    "last_static_update": "2026-10-12T04:22:17.947805+00:00"
   },
   {
     "mmsi": "244812520",
@@ -997576,7 +997576,7 @@
     },
     "destination": "JP TYO V",
     "max_draught": 5.7,
-    "last_static_update": "2026-10-11T04:34:10.618278+00:00",
+    "last_static_update": "2026-10-12T04:22:15.190833+00:00",
     "estimated_dwt": 43545
   },
   {
@@ -998861,7 +998861,7 @@
     },
     "destination": "TUG BOAT",
     "max_draught": 2.2,
-    "last_static_update": "2026-10-11T04:33:56.258416+00:00"
+    "last_static_update": "2026-10-12T04:21:58.426138+00:00"
   },
   {
     "mmsi": "261182445",
@@ -1005187,8 +1005187,8 @@
       "D": 14
     },
     "destination": "EEMUG",
-    "max_draught": 9.7,
-    "last_static_update": "2026-10-11T04:39:30.351382+00:00"
+    "max_draught": 8,
+    "last_static_update": "2026-10-12T04:22:25.383579+00:00"
   },
   {
     "mmsi": "567001950",
@@ -1048501,7 +1048501,7 @@
     },
     "destination": "CHERRY POINT WASH",
     "max_draught": 10.1,
-    "last_static_update": "2026-10-11T04:28:07.195594+00:00"
+    "last_static_update": "2026-10-12T04:22:25.707162+00:00"
   },
   {
     "mmsi": "368268250",
@@ -1053129,7 +1053129,7 @@
     },
     "destination": "NAKNEK",
     "max_draught": null,
-    "last_static_update": "2026-10-10T21:20:53.821373+00:00"
+    "last_static_update": "2026-10-12T04:22:07.941182+00:00"
   },
   {
     "mmsi": "244780748",
@@ -1054425,7 +1054425,7 @@
     },
     "destination": "ZADUR",
     "max_draught": 5.1,
-    "last_static_update": "2026-10-11T12:06:57.414342+00:00"
+    "last_static_update": "2026-10-12T04:22:02.293048+00:00"
   },
   {
     "mmsi": "352003540",
@@ -1086340,9 +1086340,9 @@
       "C": 20,
       "D": 31
     },
-    "destination": "DEWVN",
-    "max_draught": 12,
-    "last_static_update": "2026-10-10T11:57:53.319166+00:00"
+    "destination": "DEHAM",
+    "max_draught": 11.7,
+    "last_static_update": "2026-10-12T04:22:01.078640+00:00"
   },
   {
     "mmsi": "431929000",
@@ -1086393,7 +1086393,7 @@
     },
     "destination": "BRISTOL",
     "max_draught": 8.5,
-    "last_static_update": "2026-10-11T04:09:50.171051+00:00"
+    "last_static_update": "2026-10-12T04:21:50.283498+00:00"
   },
   {
     "mmsi": "368195910",
@@ -1107657,7 +1107657,7 @@
     },
     "destination": "JP KWS TD",
     "max_draught": 4.8,
-    "last_static_update": "2026-10-11T04:16:03.875423+00:00"
+    "last_static_update": "2026-10-12T04:22:17.238880+00:00"
   },
   {
     "mmsi": "271002075",
@@ -1109550,7 +1109550,7 @@
     },
     "destination": "ES CRS",
     "max_draught": 4.8,
-    "last_static_update": "2026-10-10T17:11:05.382394+00:00"
+    "last_static_update": "2026-10-12T04:21:53.072232+00:00"
   },
   {
     "mmsi": "235003960",
@@ -1140893,7 +1140893,7 @@
     },
     "destination": "Unknown",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:34:16.108798+00:00"
+    "last_static_update": "2026-10-12T04:22:25.380977+00:00"
   },
   {
     "mmsi": "563211800",
@@ -1153255,7 +1153255,7 @@
     },
     "destination": "AAL",
     "max_draught": 10,
-    "last_static_update": "2026-10-11T04:33:52.254306+00:00"
+    "last_static_update": "2026-10-12T04:22:02.293373+00:00"
   },
   {
     "mmsi": "244181450",
@@ -1161965,9 +1161965,9 @@
       "C": 11,
       "D": 21
     },
-    "destination": "US POA>GB LIV",
-    "max_draught": 11.7,
-    "last_static_update": "2026-10-11T04:32:45.818765+00:00",
+    "destination": "GB LIV > GB LIV",
+    "max_draught": 6.6,
+    "last_static_update": "2026-10-12T04:22:18.262486+00:00",
     "estimated_dwt": 61132
   },
   {
@@ -1167740,9 +1167740,9 @@
       "C": 18,
       "D": 7
     },
-    "destination": "JP TYO OFF",
+    "destination": "JP TYO CW",
     "max_draught": 7.7,
-    "last_static_update": "2026-10-11T04:40:17.620874+00:00"
+    "last_static_update": "2026-10-12T04:22:18.799550+00:00"
   },
   {
     "mmsi": "247090930",
@@ -1172441,7 +1172441,7 @@
     },
     "destination": "DEN HELDER",
     "max_draught": 4.2,
-    "last_static_update": "2026-10-11T04:40:04.104254+00:00"
+    "last_static_update": "2026-10-12T04:22:06.748233+00:00"
   },
   {
     "mmsi": "244170856",
@@ -1177074,7 +1177074,7 @@
     },
     "destination": "RAAMSDONKSVEER",
     "max_draught": 1.2,
-    "last_static_update": "2026-10-11T04:39:52.960528+00:00"
+    "last_static_update": "2026-10-12T04:22:06.379203+00:00"
   },
   {
     "mmsi": "636022176",
@@ -1210711,9 +1210711,9 @@
       "C": 18,
       "D": 13
     },
-    "destination": "RUULU",
-    "max_draught": 6.5,
-    "last_static_update": "2026-09-26T20:40:08.234501+00:00"
+    "destination": "SOBBO",
+    "max_draught": 11.9,
+    "last_static_update": "2026-10-12T04:22:19.679396+00:00"
   },
   {
     "mmsi": "368203670",
@@ -1214345,7 +1214345,7 @@
     },
     "destination": "NL VLI",
     "max_draught": 7.5,
-    "last_static_update": "2026-10-11T04:38:50.830645+00:00"
+    "last_static_update": "2026-10-12T04:22:08.458665+00:00"
   },
   {
     "mmsi": "525020278",
@@ -1274878,7 +1274878,7 @@
     },
     "destination": "OSS",
     "max_draught": 0.2,
-    "last_static_update": "2026-10-11T12:08:26.229609+00:00"
+    "last_static_update": "2026-10-12T04:22:19.680295+00:00"
   },
   {
     "mmsi": "601626876",
@@ -1288276,8 +1288276,8 @@
       "D": 10
     },
     "destination": "NL VLI",
-    "max_draught": 7,
-    "last_static_update": "2026-10-11T04:21:10.358081+00:00"
+    "max_draught": 6.8,
+    "last_static_update": "2026-10-12T04:22:15.193243+00:00"
   },
   {
     "mmsi": "231595513",
@@ -1294150,7 +1294150,7 @@
     },
     "destination": "LEEUWARDEN",
     "max_draught": 2,
-    "last_static_update": "2026-10-11T04:32:18.729229+00:00"
+    "last_static_update": "2026-10-12T04:22:18.263458+00:00"
   },
   {
     "mmsi": "244750883",
@@ -1295201,7 +1295201,7 @@
     },
     "destination": "TENDERING",
     "max_draught": 4,
-    "last_static_update": "2026-10-11T12:08:06.875848+00:00"
+    "last_static_update": "2026-10-12T04:22:17.238027+00:00"
   },
   {
     "mmsi": "357329000",
@@ -1296608,9 +1296608,9 @@
       "C": 26,
       "D": 6
     },
-    "destination": "IN MUN",
-    "max_draught": 8.4,
-    "last_static_update": "2026-08-28T23:04:29.772239+00:00"
+    "destination": "JP THS",
+    "max_draught": 8.6,
+    "last_static_update": "2026-10-12T04:22:02.292720+00:00"
   },
   {
     "mmsi": "684598612",
@@ -1334998,7 +1334998,7 @@
     },
     "destination": "Unknown",
     "max_draught": 2,
-    "last_static_update": "2026-10-11T04:09:54.064791+00:00"
+    "last_static_update": "2026-10-12T04:22:11.322978+00:00"
   },
   {
     "mmsi": "393330364",
@@ -1338544,7 +1338544,7 @@
     },
     "destination": "CADIZ",
     "max_draught": 5,
-    "last_static_update": "2026-10-11T04:34:12.872371+00:00"
+    "last_static_update": "2026-10-12T04:22:18.263170+00:00"
   },
   {
     "mmsi": "224261230",
@@ -1355925,7 +1355925,7 @@
     },
     "destination": "HONOLULU",
     "max_draught": null,
-    "last_static_update": "2026-10-09T22:15:52.569394+00:00"
+    "last_static_update": "2026-10-12T04:21:52.615424+00:00"
   },
   {
     "mmsi": "352004642",
@@ -1370864,9 +1370864,9 @@
       "C": 13,
       "D": 3
     },
-    "destination": ">JP UBJ OFF",
-    "max_draught": 6.2,
-    "last_static_update": "2026-09-03T16:09:32.318198+00:00"
+    "destination": "JP YKK OFF",
+    "max_draught": 5,
+    "last_static_update": "2026-10-12T04:21:50.842116+00:00"
   },
   {
     "mmsi": "503126050",
@@ -1392336,7 +1392336,7 @@
     },
     "destination": "VANCOUVER BC",
     "max_draught": 3,
-    "last_static_update": "2026-10-11T04:21:48.008964+00:00"
+    "last_static_update": "2026-10-12T04:22:01.077771+00:00"
   },
   {
     "mmsi": "244163771",
@@ -1403901,7 +1403901,7 @@
     },
     "destination": "FR ANT",
     "max_draught": 3.4,
-    "last_static_update": "2026-10-11T04:21:47.718933+00:00"
+    "last_static_update": "2026-10-12T04:22:09.241386+00:00"
   },
   {
     "mmsi": "225997860",
@@ -1422440,7 +1422440,7 @@
     },
     "destination": "GENOA",
     "max_draught": 2.3,
-    "last_static_update": "2026-10-11T04:34:11.696528+00:00"
+    "last_static_update": "2026-10-12T04:22:20.655365+00:00"
   },
   {
     "mmsi": "775994032",
@@ -1426127,7 +1426127,7 @@
     },
     "destination": "DEBRB",
     "max_draught": 14.6,
-    "last_static_update": "2026-09-30T12:01:14.178883+00:00"
+    "last_static_update": "2026-10-12T04:22:16.782831+00:00"
   },
   {
     "mmsi": "368251260",
@@ -1439740,7 +1439740,7 @@
     },
     "destination": "ID-JEP",
     "max_draught": 13.1,
-    "last_static_update": "2026-09-29T21:53:37.252655+00:00"
+    "last_static_update": "2026-10-12T04:22:11.323377+00:00"
   },
   {
     "mmsi": "2655044",
@@ -1462149,9 +1462149,9 @@
       "C": 11,
       "D": 21
     },
-    "destination": "CN XMN",
-    "max_draught": 9.5,
-    "last_static_update": "2026-07-29T15:51:56.539831+00:00"
+    "destination": "ZA DUR",
+    "max_draught": 11.5,
+    "last_static_update": "2026-10-12T04:22:15.191557+00:00"
   },
   {
     "mmsi": "525018475",
@@ -1497756,7 +1497756,7 @@
     },
     "destination": "GB TIL",
     "max_draught": 9.3,
-    "last_static_update": "2026-10-11T04:28:08.503246+00:00"
+    "last_static_update": "2026-10-12T04:22:28.173995+00:00"
   },
   {
     "mmsi": "244820884",
@@ -1532620,14 +1532620,14 @@
     "call_sign": "MMOA6",
     "imo_number": 8736241,
     "dimensions": {
-      "A": 15,
+      "A": 5,
       "B": 27,
-      "C": 3,
-      "D": 4
+      "C": 2,
+      "D": 5
     },
     "destination": "BODRUM",
     "max_draught": 4.5,
-    "last_static_update": "2026-10-11T04:38:25.981693+00:00"
+    "last_static_update": "2026-10-12T04:22:24.481862+00:00"
   },
   {
     "mmsi": "205278389",
@@ -1537251,7 +1537251,7 @@
     },
     "destination": "NLDHR",
     "max_draught": 4.2,
-    "last_static_update": "2026-10-11T04:40:19.415557+00:00"
+    "last_static_update": "2026-10-12T04:22:20.656156+00:00"
   },
   {
     "mmsi": "244374226",
@@ -1541826,9 +1541826,9 @@
       "C": 18,
       "D": 14
     },
-    "destination": "JP YOK",
-    "max_draught": 10.5,
-    "last_static_update": "2026-09-30T11:58:44.294311+00:00"
+    "destination": "HK HKG",
+    "max_draught": 10.6,
+    "last_static_update": "2026-10-12T04:22:19.678888+00:00"
   },
   {
     "mmsi": "974010576",
@@ -1558425,7 +1558425,7 @@
     },
     "destination": "IN ZICHT",
     "max_draught": 0.1,
-    "last_static_update": "2026-10-11T04:40:20.022229+00:00"
+    "last_static_update": "2026-10-12T04:22:24.049610+00:00"
   },
   {
     "mmsi": "366177928",
@@ -1561769,7 +1561769,7 @@
     },
     "destination": "LOCAL OPS",
     "max_draught": 1.2,
-    "last_static_update": "2026-10-11T04:04:00.876629+00:00"
+    "last_static_update": "2026-10-12T04:21:55.787993+00:00"
   },
   {
     "mmsi": "144008124",
@@ -1633421,7 +1633421,7 @@
     },
     "destination": "SIKOP",
     "max_draught": 6.7,
-    "last_static_update": "2026-10-11T04:36:36.312609+00:00"
+    "last_static_update": "2026-10-12T04:22:06.747877+00:00"
   },
   {
     "mmsi": "367310140",
@@ -1641393,7 +1641393,7 @@
     },
     "destination": "UTORDA",
     "max_draught": 2.4,
-    "last_static_update": "2026-10-11T04:33:56.257702+00:00"
+    "last_static_update": "2026-10-12T04:21:52.614884+00:00"
   },
   {
     "mmsi": "247031900",
@@ -1645250,9 +1645250,9 @@
       "C": 12,
       "D": 20
     },
-    "destination": "FOR ORDER",
-    "max_draught": 7,
-    "last_static_update": "2026-09-03T12:03:36.883240+00:00"
+    "destination": "ISDEMIR",
+    "max_draught": 14.6,
+    "last_static_update": "2026-10-12T04:22:12.268793+00:00"
   },
   {
     "mmsi": "636017896",
@@ -1649892,7 +1649892,7 @@
     },
     "destination": "ASHDOD",
     "max_draught": 6.5,
-    "last_static_update": "2026-10-11T04:40:19.414928+00:00",
+    "last_static_update": "2026-10-12T04:22:24.050729+00:00",
     "estimated_dwt": 10000
   },
   {
@@ -1656594,7 +1656594,7 @@
     },
     "destination": "AYB",
     "max_draught": 1,
-    "last_static_update": "2026-10-11T04:16:01.833778+00:00"
+    "last_static_update": "2026-10-12T04:22:12.269376+00:00"
   },
   {
     "mmsi": "730984727",
@@ -1677836,7 +1677836,7 @@
     },
     "destination": "WEURT",
     "max_draught": 1.6,
-    "last_static_update": "2026-10-11T04:38:52.446329+00:00",
+    "last_static_update": "2026-10-12T04:22:17.611768+00:00",
     "estimated_dwt": 10000
   },
   {
@@ -1701391,7 +1701391,7 @@
     },
     "destination": "JP KZU",
     "max_draught": 5.4,
-    "last_static_update": "2026-10-11T04:39:20.693292+00:00"
+    "last_static_update": "2026-10-12T04:22:12.849825+00:00"
   },
   {
     "mmsi": "227145800",
@@ -1703563,7 +1703563,7 @@
     },
     "destination": "ROTTERDAM",
     "max_draught": 4.1,
-    "last_static_update": "2026-10-11T04:34:06.096248+00:00"
+    "last_static_update": "2026-10-12T04:22:08.458349+00:00"
   },
   {
     "mmsi": "244700823",
@@ -1754690,7 +1754690,7 @@
     },
     "destination": "LIEPAJA",
     "max_draught": 1.5,
-    "last_static_update": "2026-10-10T21:13:36.751407+00:00"
+    "last_static_update": "2026-10-12T04:22:22.180651+00:00"
   },
   {
     "mmsi": "256964165",
@@ -1786788,7 +1786788,7 @@
     },
     "destination": "SABINE PASS,TEXAS",
     "max_draught": 7.8,
-    "last_static_update": "2026-10-11T04:03:58.175304+00:00"
+    "last_static_update": "2026-10-12T04:22:01.078071+00:00"
   },
   {
     "mmsi": "1063454615",
@@ -1796943,7 +1796943,7 @@
     },
     "destination": "FLISVOS",
     "max_draught": 1.6,
-    "last_static_update": "2026-10-11T04:39:47.321359+00:00",
+    "last_static_update": "2026-10-12T04:21:59.375497+00:00",
     "estimated_dwt": 10000
   },
   {
@@ -1805132,7 +1805132,7 @@
     },
     "destination": "ZADUR",
     "max_draught": 12.6,
-    "last_static_update": "2026-10-11T04:28:04.832430+00:00"
+    "last_static_update": "2026-10-12T04:22:22.671568+00:00"
   },
   {
     "mmsi": "369970777",
@@ -1814540,7 +1814540,7 @@
     },
     "destination": "RUNDFAHRTEN TRIER",
     "max_draught": 1.3,
-    "last_static_update": "2026-10-11T04:09:47.040304+00:00"
+    "last_static_update": "2026-10-12T04:22:18.264444+00:00"
   },
   {
     "mmsi": "205266000",
@@ -1838987,7 +1838987,7 @@
     },
     "destination": "FT LAUD",
     "max_draught": 2,
-    "last_static_update": "2026-10-11T04:40:20.024239+00:00",
+    "last_static_update": "2026-10-12T04:22:24.050942+00:00",
     "estimated_dwt": 10000
   },
   {
@@ -1864134,9 +1864134,9 @@
       "C": 15,
       "D": 5
     },
-    "destination": "VINEYARD WIND",
+    "destination": "PROVPORT RI",
     "max_draught": 5.6,
-    "last_static_update": "2026-10-11T04:26:33.987948+00:00"
+    "last_static_update": "2026-10-12T04:22:24.483596+00:00"
   },
   {
     "mmsi": "624470047",
@@ -1908996,7 +1908996,7 @@
     },
     "destination": "HELSINGOER",
     "max_draught": 2,
-    "last_static_update": "2026-10-11T04:40:19.771445+00:00"
+    "last_static_update": "2026-10-12T04:22:24.483924+00:00"
   },
   {
     "mmsi": "269536904",
@@ -1920717,9 +1920717,9 @@
       "C": 22,
       "D": 10
     },
-    "destination": "ID",
+    "destination": "ID KAMPEH",
     "max_draught": 7.3,
-    "last_static_update": "2026-10-11T04:04:19.776518+00:00"
+    "last_static_update": "2026-10-12T04:22:19.679142+00:00"
   },
   {
     "mmsi": "425817015",
@@ -1960386,7 +1960386,7 @@
     },
     "destination": "ROTTERDAM",
     "max_draught": 2,
-    "last_static_update": "2026-10-11T04:32:02.209368+00:00"
+    "last_static_update": "2026-10-12T04:22:18.801043+00:00"
   },
   {
     "mmsi": "173969421",
@@ -2042914,7 +2042914,7 @@
     },
     "destination": "IJMUIDEN",
     "max_draught": 1.2,
-    "last_static_update": "2026-10-09T22:15:45.058296+00:00"
+    "last_static_update": "2026-10-12T04:21:52.919296+00:00"
   },
   {
     "mmsi": "243743913",
@@ -2107804,7 +2107804,7 @@
     },
     "destination": "LIVERPOOL",
     "max_draught": 2.4,
-    "last_static_update": "2026-10-11T04:26:07.868050+00:00"
+    "last_static_update": "2026-10-12T04:22:17.609949+00:00"
   },
   {
     "mmsi": "227318220",
@@ -2111453,7 +2111453,7 @@
     },
     "destination": "VEENDAM",
     "max_draught": 1.9,
-    "last_static_update": "2026-10-11T04:34:13.583657+00:00"
+    "last_static_update": "2026-10-12T04:22:25.383038+00:00"
   },
   {
     "mmsi": "231097000",
@@ -2122276,7 +2122276,7 @@
     },
     "destination": "ESKAR",
     "max_draught": 8.1,
-    "last_static_update": "2026-10-11T04:17:44.573398+00:00"
+    "last_static_update": "2026-10-12T04:22:17.609387+00:00"
   },
   {
     "mmsi": "677030900",
@@ -2172467,7 +2172467,7 @@
     },
     "destination": "PIRAEUS",
     "max_draught": 4.8,
-    "last_static_update": "2026-10-11T04:20:29.906296+00:00"
+    "last_static_update": "2026-10-12T04:22:04.308819+00:00"
   },
   {
     "mmsi": "247142230",
@@ -2235192,7 +2235192,7 @@
     },
     "destination": "ESBCN",
     "max_draught": 2.3,
-    "last_static_update": "2026-10-11T04:40:01.478737+00:00",
+    "last_static_update": "2026-10-12T04:22:06.378652+00:00",
     "estimated_dwt": 10000
   },
   {
@@ -2349536,7 +2349536,7 @@
     },
     "destination": "A\\PROVINCETOWNN",
     "max_draught": 3,
-    "last_static_update": "2026-08-26T20:42:09.063133+00:00"
+    "last_static_update": "2026-10-12T04:22:23.177765+00:00"
   },
   {
     "mmsi": "605411088",
@@ -2359109,7 +2359109,7 @@
     },
     "destination": "PARIJS",
     "max_draught": 0.1,
-    "last_static_update": "2026-10-11T04:34:23.113654+00:00"
+    "last_static_update": "2026-10-12T04:22:23.177896+00:00"
   },
   {
     "mmsi": "246055002",
@@ -2420094,7 +2420094,7 @@
     },
     "destination": "BORSSELE OWF",
     "max_draught": 5.1,
-    "last_static_update": "2026-10-11T04:10:19.036335+00:00"
+    "last_static_update": "2026-10-12T04:22:25.706131+00:00"
   },
   {
     "mmsi": "210706000",
@@ -2442450,7 +2442450,7 @@
     },
     "destination": "Unknown",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:12:08.369872+00:00"
+    "last_static_update": "2026-10-12T04:22:23.176664+00:00"
   },
   {
     "mmsi": "341589002",
@@ -2457954,7 +2457954,7 @@
     },
     "destination": "Unknown",
     "max_draught": null,
-    "last_static_update": "2026-10-10T21:15:45.560954+00:00"
+    "last_static_update": "2026-10-12T04:21:56.921795+00:00"
   },
   {
     "mmsi": "227264611",
@@ -2518723,7 +2518723,7 @@
     },
     "destination": "VIAREGGIO",
     "max_draught": 3.5,
-    "last_static_update": "2026-10-11T04:34:13.935418+00:00"
+    "last_static_update": "2026-10-12T04:22:20.655564+00:00"
   },
   {
     "mmsi": "235090634",
@@ -2538714,7 +2538714,7 @@
     },
     "destination": "Unknown",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:21:48.214023+00:00"
+    "last_static_update": "2026-10-12T04:21:58.920495+00:00"
   },
   {
     "mmsi": "319046900",
@@ -2575275,7 +2575275,7 @@
     },
     "destination": "GUARD WESSEL",
     "max_draught": 2.1,
-    "last_static_update": "2026-10-11T04:40:18.873462+00:00"
+    "last_static_update": "2026-10-12T04:22:21.387630+00:00"
   },
   {
     "mmsi": "511102018",
@@ -2611416,9 +2611416,9 @@
       "C": 6,
       "D": 6
     },
-    "destination": "ROTTERDAM",
-    "max_draught": 1.7,
-    "last_static_update": "2026-10-09T04:40:06.879159+00:00"
+    "destination": "HUCKINGEN",
+    "max_draught": 1.9,
+    "last_static_update": "2026-10-12T04:22:22.181030+00:00"
   },
   {
     "mmsi": "255913562",
@@ -2661543,7 +2661543,7 @@
     },
     "destination": "PL SZZ",
     "max_draught": 7.1,
-    "last_static_update": "2026-10-11T04:40:10.647683+00:00"
+    "last_static_update": "2026-10-12T04:22:12.269738+00:00"
   },
   {
     "mmsi": "244630744",
@@ -2691469,7 +2691469,7 @@
     },
     "destination": "Unknown",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:33:04.473437+00:00"
+    "last_static_update": "2026-10-12T04:21:53.427724+00:00"
   },
   {
     "mmsi": "636026658",
@@ -2741287,7 +2741287,7 @@
     },
     "destination": "LOFALSTRAND",
     "max_draught": 4,
-    "last_static_update": "2026-10-11T04:40:19.772053+00:00"
+    "last_static_update": "2026-10-12T04:22:13.443336+00:00"
   },
   {
     "mmsi": "667002631",
@@ -2744916,7 +2744916,7 @@
     },
     "destination": "ALGER",
     "max_draught": 10.1,
-    "last_static_update": "2026-10-10T17:06:43.638325+00:00"
+    "last_static_update": "2026-10-12T04:22:22.669301+00:00"
   },
   {
     "mmsi": "525110558",
@@ -2760615,7 +2760615,7 @@
     },
     "destination": "Unknown",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:27:14.340520+00:00"
+    "last_static_update": "2026-10-12T04:21:58.920721+00:00"
   },
   {
     "mmsi": "244701671",
@@ -2790985,7 +2790985,7 @@
     },
     "destination": "Unknown",
     "max_draught": null,
-    "last_static_update": "2026-10-11T04:40:01.478343+00:00"
+    "last_static_update": "2026-10-12T04:22:02.293249+00:00"
   },
   {
     "mmsi": "205578790",
@@ -2800222,7 +2800222,7 @@
     },
     "destination": "ES CRS",
     "max_draught": 8.3,
-    "last_static_update": "2026-10-11T04:40:17.203407+00:00"
+    "last_static_update": "2026-10-12T04:22:27.307042+00:00"
   },
   {
     "mmsi": "525801017",
@@ -2806041,7 +2806041,7 @@
     },
     "destination": "Unknown",
     "max_draught": null,
-    "last_static_update": "2026-10-10T21:16:12.621692+00:00"
+    "last_static_update": "2026-10-12T04:22:25.705089+00:00"
   },
   {
     "mmsi": "525500110",
@@ -2810125,7 +2810125,7 @@
     },
     "destination": "ONNE PORT",
     "max_draught": 6.5,
-    "last_static_update": "2026-10-11T04:30:34.440364+00:00"
+    "last_static_update": "2026-10-12T04:22:12.849659+00:00"
   },
   {
     "mmsi": "657145600",
@@ -2815527,7 +2815527,7 @@
     },
     "destination": "ANACORTES,WA",
     "max_draught": 2,
-    "last_static_update": "2026-10-10T21:11:22.376171+00:00"
+    "last_static_update": "2026-10-12T04:22:18.264009+00:00"
   },
   {
     "mmsi": "232069078",
@@ -2823493,6 +2823493,53 @@
   },
   {
     "mmsi": "606538843",
+    "name": "Unknown",
+    "ship_type": null,
+    "estimated_dwt": null
+  },
+  {
+    "mmsi": "620800594",
+    "name": "Unknown",
+    "ship_type": null,
+    "estimated_dwt": null
+  },
+  {
+    "mmsi": "631010083",
+    "name": "Unknown",
+    "ship_type": null,
+    "estimated_dwt": null
+  },
+  {
+    "mmsi": "620800584",
+    "name": "Unknown",
+    "ship_type": null,
+    "estimated_dwt": null
+  },
+  {
+    "mmsi": "376823000",
+    "name": "Unknown",
+    "ship_type": null,
+    "estimated_dwt": null
+  },
+  {
+    "mmsi": "352003326",
+    "name": "QMS AL MARJAN",
+    "call_sign": "3E7485",
+    "imo_number": 9795086,
+    "ship_type": 52,
+    "dimensions": {
+      "A": 16,
+      "B": 49,
+      "C": 5,
+      "D": 11
+    },
+    "destination": "UAE DUBAI DMC",
+    "max_draught": 4,
+    "last_static_update": "2026-10-12T04:22:11.323795+00:00",
+    "estimated_dwt": 10000
+  },
+  {
+    "mmsi": "525200077",
     "name": "Unknown",
     "ship_type": null,
     "estimated_dwt": null
